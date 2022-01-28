@@ -49,7 +49,6 @@ public class UserRestController {
 		}
 		
 		
-		userBO.login(loginId, password);
 		
 		return result;
 		
@@ -74,6 +73,8 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	
 	
 	// id 중복 체크
 	

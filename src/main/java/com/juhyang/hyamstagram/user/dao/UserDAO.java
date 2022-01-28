@@ -8,9 +8,6 @@ import com.juhyang.hyamstagram.user.model.User;
 @Repository
 public interface UserDAO {
 
-	public String login(
-			@Param("loginId") String loginId, 
-			@Param("password") String password);
 
 	public int insertUser(
 			@Param("loginId") String loginId, 
@@ -20,6 +17,7 @@ public interface UserDAO {
 
 	public boolean countUser(@Param("loginId") String loginId);
 
-	public User selectUser(String loginId, String encPw);
+	public User selectUser(@Param("loginId")String loginId, 
+			@Param("password") String password);
 
 }

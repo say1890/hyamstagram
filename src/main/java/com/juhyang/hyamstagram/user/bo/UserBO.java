@@ -13,11 +13,6 @@ public class UserBO {
 UserDAO userDAO;
 
 
-public String login(String loginId,
-		String password) {
-	
-	return userDAO.login(loginId, password);
-}
 
 
 // 회원가입 ( + 암호화 )

@@ -92,7 +92,7 @@ $(document).ready(function(){
 			return;
 		}
 		
-		if(IDDuplicate = true){
+		if(IDDuplicate == true){
 			alert("id가 중복되었습니다.");
 			return;
 		}

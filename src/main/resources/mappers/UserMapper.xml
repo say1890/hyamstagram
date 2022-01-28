@@ -4,7 +4,7 @@
 
 
 
-<select id ="login" parameterType = "map" resultType = "com.juhyang.hyamstagram.user.model.User">
+<select id ="selectUser" parameterType = "map" resultType = "com.juhyang.hyamstagram.user.model.User">
 		SELECT
 	user_id,
 	loginId,

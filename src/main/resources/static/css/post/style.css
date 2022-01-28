@@ -1,0 +1,29 @@
+@charset "UTF-8";
+body{margin:0}
+
+#wrap{
+	
+	width:1200px;
+	height:1800px;
+	float:none;
+	margin:0 auto;
+}
+
+
+header{
+	width:1200px;
+	height:80px;
+
+}
+
+section{
+	      
+	width:1200px;
+	height:700px;
+	
+}
+
+section>#post{
+	width:600px;
+	height:600px;
+}
