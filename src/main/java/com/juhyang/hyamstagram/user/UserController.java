@@ -21,6 +21,11 @@ public class UserController {
 		return "/user/signUp";
 	}
 	
+	//글쓰기
 	
+	@GetMapping("/addPost_view")
+	public String addPostView() {
+		return "post/add_post";
+	}
 	
 }

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/post")
 public class PostController {
 
-	@RequestMapping("/main")
+	@RequestMapping("/list_view")
 	public String mainView()
 	{
 		return "/post/main";
@@ -18,10 +18,7 @@ public class PostController {
 		return"/post/add_post";
 	}
 	
-	@RequestMapping("/list_view")
-	public String listView() {
-		return"/post/list_view";
-	}
+	
 	
 	
 }

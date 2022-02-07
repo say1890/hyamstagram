@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,23 +20,32 @@
 		
 		<link rel = "stylesheet" href = "/static/css/post/style.css" type = "text/css">
 	
+	 <!--  -->
+
 
 </head>
 <body>
 <div id = "wrap">
 
-	<header class ="bg-info row">
+	<header class ="bg-info d-flex">
 		<div id ="logo" class ="ml-3"><h1><i>hyamstagram</i></h1></div>
 		<div id ="searchbar" class ="col-md-5 mx-5 d-flex" >
-			<input type = "text" class ="form-control"><button type ="button" class="btn btn-lg btn-primary output col-5">°Ë»ö</button>
+			<input type = "text" class ="form-control">
+			<button type ="button" class="btn btn-lg btn-primary output col-5">°Ë»ö</button>
 		</div>
 		<div class ="icon d-flex mt-2 float-right mr-0">
+		<c:if test="${not empty userName }">
+			<div id = "name">${userName}´Ô <a href="/user/sign_out">·Î±×¾Æ¿ô</a> </div>
+		</c:if>
 			<div id ="home"><img src ="/static/image/home.svg" width = 80px height = 50px></div>
-			<div id ="Post"><img src ="/static/image/note.svg" width = 80px height = 50px></div>
+			<button type ="button" class ="btn">
+				<img src ="/static/image/note.svg" width = 80px height = 50px >
+			</button>
+			
 			<div id ="profile"><img src ="/static/image/profile.svg" width = 80px height = 50px></div>
 		</div>
 	</header>
-	<section class ="row bg-success">
+	<section class ="row bg-success d-flex">
 		
 			<section id ="post" class ="bg-secondary col-6">
 			  <div></div>
@@ -45,5 +55,11 @@
 	</section>
 
 </div>
+
+<script>
+	
+
+</script>
+
 </body>
 </html>
