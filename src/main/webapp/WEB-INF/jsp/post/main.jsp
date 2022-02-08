@@ -9,11 +9,12 @@
 
 
        <!-- bootstrap CDN link -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-            
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 
 	  <!-- css -->
@@ -25,31 +26,39 @@
 
 </head>
 <body>
-<div id = "wrap">
+<div id = "wrap" class ="container-fluid">
 
-	<header class ="bg-info d-flex">
-		<div id ="logo" class ="ml-3"><h1><i>hyamstagram</i></h1></div>
-		<div id ="searchbar" class ="col-md-5 mx-5 d-flex" >
-			<input type = "text" class ="form-control">
-			<button type ="button" class="btn btn-lg btn-primary output col-5">°Ë»ö</button>
-		</div>
-		<div class ="icon d-flex mt-2 float-right mr-0">
-		<c:if test="${not empty userName }">
-			<div id = "name">${userName}´Ô <a href="/user/sign_out">·Î±×¾Æ¿ô</a> </div>
-		</c:if>
-			<div id ="home"><img src ="/static/image/home.svg" width = 80px height = 50px></div>
-			<button type ="button" class ="btn">
-				<img src ="/static/image/note.svg" width = 80px height = 50px >
-			</button>
-			
-			<div id ="profile"><img src ="/static/image/profile.svg" width = 80px height = 50px></div>
-		</div>
-	</header>
-	<section class ="row bg-success d-flex">
+	<c:import url ="/WEB-INF/jsp/include/header.jsp" />
+	<section class ="bg-success d-flex justify-content-center align-items-center">
 		
-			<section id ="post" class ="bg-secondary col-6">
-			  <div></div>
-			
+			<section id ="post" class ="bg-light col-8 ">
+			<c:forEach var="post" items="${postList}">
+				
+					  <div id = "userInfo" class ="d-flex mt-3">
+							  	<div id = "profile" class = "bg-success">
+							  		<img src = "https://file.mk.co.kr/meet/neds/2021/06/image_readtop_2021_535745_16226846584668330.jpg" width=100px;  class ="img-circle">
+							  	</div>
+							  	<div id = "UserName" class ="align-self-center ml-3 mr-5"><h2>${userName}</h2></div>
+							    <button type ="button" id ="seeMoreBtn" class =" col-3 btn btn-primary float-right">´õ º¸±â</button>
+					  </div>
+					  
+					  <hr>
+					  <div class ="d-flex">
+						  <button type="button" class="btn btn-default"> < </button>
+						  <div id ="postPicture" class ="bg-secondary">
+						  	<img src ="${post.post_imagePath}" width="200">
+						  </div>
+						   <button type="button" class="btn btn-default"> > </button>
+					  </div>
+					  
+					  
+					  <div id ="description">
+						  	${post.post_content}
+					  </div>
+					  
+					  <div class ="mt-5"></div>
+					 
+			</c:forEach>
 			</section>
 		
 	</section>
@@ -57,7 +66,23 @@
 </div>
 
 <script>
-	
+	$(document).ready(function(){
+		var desc =  $("#description").text();
+		
+		if(desc.length > 14){
+			
+			$(this).html(desc.slice(0, 14));
+		}
+		
+		$("#postBtn").on("click", function(){
+			
+			$.ajax({
+					
+				
+			}); // ajax end
+		}); // btn end
+		
+	}); // document end
 
 </script>
 

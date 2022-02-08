@@ -8,8 +8,23 @@ body{margin:0}
 	float:none;
 	margin:0 auto;
 }
+#profileImage
+{
+	width:100px;
+	height:100px;
+	margin:0 auto;
+}
+#uploadImage{
+	width:300px;
+	height:300px;
+
+}
 
 
+
+#userInfo{
+	height:50px;
+}
 header{
 	width:1200px;
 	height:80px;
@@ -25,5 +40,5 @@ section{
 
 section>#post{
 	width:600px;
-	height:600px;
+	
 }

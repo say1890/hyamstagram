@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.juhyang.hyamstagram.post.dao.PostDAO">
+	
+	<insert id="insertPost" parameterType="map">
+		INSERT INTO `post` 
+		(
+			`post_userId`
+			,`post_userName`
+			, `post_content`
+			, `post_imagePath`
+			, `createdAt`
+			, `updatedAt`
+		) VALUES (
+			#{userId}
+			,#{userName}
+			, #{content}
+			, #{imagePath}
+			, now()
+			, now()
+		)
+	
+	</insert>
+	
+	<select id="selectPostList" resultType="com.juhyang.hyamstagram.post.model.Post"
+	parameterType="int">
+	
+		SELECT 
+			`post_id`
+			, `post_userId`
+			, `post_content`
+			, `post_imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		WHERE 
+			`post_userId` = #{userId}
+		ORDER BY `post_id` DESC
+	
+	</select>
+	
+	<select id="selectPost" resultType="com.juhyang.hyamstagram.post.model.Post">
+		SELECT 
+			`post_id`
+			, `post_userId`
+			, `post_content`
+			, `post_imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`post`
+		WHERE
+			`post_id` = #{postId}
+	
+	</select>
+	
+	
+	
+	
+	
+	
+	<delete id="deletePost" parameterType="int">
+		DELETE FROM `post`
+		WHERE
+			`id` = #{postId}
+	
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+
+
+</mapper>
