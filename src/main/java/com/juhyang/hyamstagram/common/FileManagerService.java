@@ -5,24 +5,31 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
-public class FileManagerService {
+public class FileManagerService{
 	
-	public final static String FILE_UPLOAD_PATH = "D:\\juhyang\\springProject\\upload\\image/";
-	
+	//public final static String FILE_UPLOAD_PATH = "D:\\juhyang\\springProject\\upload\\image/";
+	public final static String FILE_UPLOAD_PATH = "C:\\Users\\karu1\\OneDrive\\문서\\portfolio\\hyamstagram-workspace\\upload\\image/";
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	
 	// 파일 저장 
-	public static String saveFile(int userId, MultipartFile file) {
+	public static String saveFile(int userId, List<MultipartFile> files) {
 		
-		if(file == null) {
+		
+		
+		
+		
+		if(files == null) {
 			logger.error("FileManagerService::saveFile - 업로드 파일 없음");
 			return null;
 		}
+		
+	
 		
 		// 파일 경로
 		// 사용자 별로 구분할 수 있도록
@@ -42,9 +49,9 @@ public class FileManagerService {
 		}
 		
 		try {
-			byte[] bytes = file.getBytes();
+			byte[] bytes = ((MultipartFile) files).getBytes();
 			// 파일 저장 경로 + 파일 이름 경로 객체
-			Path path = Paths.get(filePath + file.getOriginalFilename());
+			Path path = Paths.get(filePath + ((MultipartFile) files).getOriginalFilename());
 			// 파일 저장
 			Files.write(path, bytes);
 		} catch (IOException e) {
@@ -57,11 +64,17 @@ public class FileManagerService {
 		// 파일 접근 가능한 주소 리턴
 		// <img src="/images/12_124909218/test.png">
 		
-		return "/images/" + directoryName + file.getOriginalFilename();
+		return "/images/" + directoryName + ((MultipartFile) files).getOriginalFilename();
 		
 	}
 	
-	// 파일 삭제 
+	
+	/*
+	 * 파일 삭제 
+	 * 
+	 * 
+	 */
+
 	public static void removeFile(String filePath) {
 		
 		if(filePath == null) {

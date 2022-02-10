@@ -34,12 +34,26 @@
 			<section id ="post" class ="bg-light col-8 ">
 			<c:forEach var="post" items="${postList}">
 				
-					  <div id = "userInfo" class ="d-flex mt-3">
-							  	<div id = "profile" class = "bg-success">
+					  <div id = "userInfo" class ="d-flex mt-3 ">
+							  	<div id = "profile" class = "bg-success ">
 							  		<img src = "https://file.mk.co.kr/meet/neds/2021/06/image_readtop_2021_535745_16226846584668330.jpg" width=100px;  class ="img-circle">
 							  	</div>
-							  	<div id = "UserName" class ="align-self-center ml-3 mr-5"><h2>${userName}</h2></div>
-							    <button type ="button" id ="seeMoreBtn" class =" col-3 btn btn-primary float-right">더 보기</button>
+							  	<div id = "UserName" class ="align-self-center mr-5 ml-3"><h2>${userName}</h2></div>
+							    
+							    <c:choose>
+							    <c:when test="${userName eq post.post_userName}">
+							    	<div class="dropdown">
+							        <span class="dropbtn">...</span>
+							        <div class="dropdown-content">
+							        <a href="/post/delete">삭제</a>
+							        <a href="/post/edit">수정</a>
+							 
+							      </div>
+							    </div> 
+							    </c:when>
+							     
+							    </c:choose>
+							      
 					  </div>
 					  
 					  <hr>
