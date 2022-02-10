@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.juhyang.hyamstagram.like.dao.LikeDAO">
+	<insert id ="addLike" parameterType ="map">
+	INSERT INTO `like` 
+		(	`like_postId`
+			,`like_userId`
+			,`like_userName`
+			, `createdAt`
+			
+		) VALUES (
+			#{postId}
+			,#{userId}
+			,#{userName}
+			, now()
+		)
+	</insert>
+	<select id = "selectLike" resultType ="com.juhyang.hyamstagram.like.model.Like">
+	select count(like_userId) from `like`
+	where `like_postId` = #{postId}
+	
+	
+	</select>
+</mapper>

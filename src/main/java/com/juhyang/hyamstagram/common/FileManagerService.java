@@ -13,18 +13,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileManagerService{
 	
-	//public final static String FILE_UPLOAD_PATH = "D:\\juhyang\\springProject\\upload\\image/";
-	public final static String FILE_UPLOAD_PATH = "C:\\Users\\karu1\\OneDrive\\문서\\portfolio\\hyamstagram-workspace\\upload\\image/";
+	public final static String FILE_UPLOAD_PATH = "D:\\juhyang\\springProject\\upload\\image/";
+	//public final static String FILE_UPLOAD_PATH = "C:\\Users\\karu1\\OneDrive\\문서\\portfolio\\hyamstagram-workspace\\upload\\image/";
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	
 	// 파일 저장 
-	public static String saveFile(int userId, List<MultipartFile> files) {
+	public static String saveFile(int userId, MultipartFile file) {
 		
 		
 		
 		
-		
-		if(files == null) {
+		//length == 0 으로도 확인 가능
+		if(file == null) {
 			logger.error("FileManagerService::saveFile - 업로드 파일 없음");
 			return null;
 		}
@@ -39,9 +39,16 @@ public class FileManagerService{
 		String directoryName = userId + "_" + System.currentTimeMillis() + "/";
 		
 		String filePath = FILE_UPLOAD_PATH + directoryName;
-		
 		// 디렉토리 생성
 		File directory = new File(filePath);
+		
+
+
+
+
+		
+		
+
 		if(directory.mkdir() == false) {
 			// 디렉토리 생성 에러
 			logger.error("FileManagerService::saveFile - 디렉토리 생성 에러");
@@ -49,9 +56,9 @@ public class FileManagerService{
 		}
 		
 		try {
-			byte[] bytes = ((MultipartFile) files).getBytes();
+			byte[] bytes = ((MultipartFile) file).getBytes();
 			// 파일 저장 경로 + 파일 이름 경로 객체
-			Path path = Paths.get(filePath + ((MultipartFile) files).getOriginalFilename());
+			Path path = Paths.get(filePath + ((MultipartFile) file).getOriginalFilename());
 			// 파일 저장
 			Files.write(path, bytes);
 		} catch (IOException e) {
@@ -64,7 +71,7 @@ public class FileManagerService{
 		// 파일 접근 가능한 주소 리턴
 		// <img src="/images/12_124909218/test.png">
 		
-		return "/images/" + directoryName + ((MultipartFile) files).getOriginalFilename();
+		return "/images/" + directoryName + ((MultipartFile) file).getOriginalFilename();
 		
 	}
 	

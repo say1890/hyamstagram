@@ -3,13 +3,18 @@ body{margin:0}
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+*{
+	font-family: 'Gowun Dodum', sans-serif;
+}
+
 #wrap{
 	
 	width:1200px;
-	height:1800px;
+	
 	float:none;
 	margin:0 auto;
 }
+
 #profileImage
 {
 	width:100px;
@@ -93,7 +98,7 @@ header{
 section{
 	      
 	width:1200px;
-	height:700px;
+
 	
 }
 
@@ -101,3 +106,5 @@ section>#post{
 	width:600px;
 	
 }
+
+

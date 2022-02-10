@@ -15,7 +15,8 @@
 		</div>
 		<div class ="icon d-flex mt-2 float-right mr-0">
 		<c:if test="${not empty userName }">
-			<div id = "name">${userName}´Ô <a href="/user/sign_out">·Î±×¾Æ¿ô</a> </div>
+			<div id = "name">${userId}´Ô 
+			<!--${userName}  --><a href="/user/sign_out">·Î±×¾Æ¿ô</a> </div>
 		</c:if>
 			<div id ="home"><img src ="/static/image/home.svg" width = 80px height = 50px></div>
 			<a href="/post/add_post_view" class ="btn" id ="postBtn" >

@@ -14,9 +14,9 @@ import com.juhyang.hyamstagram.post.model.Post;
 public class PostBO {
 	@Autowired
 	PostDAO postDAO;
-	public int addPost(int userId, String content, List<MultipartFile> files, String userName) {
+	public int addPost(int userId, String content, MultipartFile file, String userName) {
 		// 파일을 컴퓨터 (서버)에 저장하고, 클라이언트가(브라우저) 가 접근 가능한 주소를 만들어 낸다.  
-	String filePath = FileManagerService.saveFile(userId, files);
+	String filePath = FileManagerService.saveFile(userId, file);
 	return postDAO.insertPost(userId, content, filePath,userName);
 	}
 	

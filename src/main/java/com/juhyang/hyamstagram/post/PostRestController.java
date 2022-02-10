@@ -28,7 +28,7 @@ public class PostRestController {
 	@PostMapping("/create")
 	public Map<String, String> createPost(
 			@RequestParam("content") String content,
-			@RequestParam(value = "file", required = true) List<MultipartFile> files,
+			@RequestParam(value = "file", required = true) MultipartFile file, 
 			
 			MultipartHttpServletRequest request)
 	{
@@ -39,7 +39,7 @@ public class PostRestController {
 		int userId = (Integer)session.getAttribute("userId");
 		String userName = (String)session.getAttribute("userName");
 		int count = postBO.addPost(
-				userId, content, files,userName);
+				userId, content, file,userName);
 		
 		Map<String, String> result = new HashMap<>();
 		
