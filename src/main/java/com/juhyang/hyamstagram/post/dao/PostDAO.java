@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.juhyang.hyamstagram.post.model.DetailedPost;
 import com.juhyang.hyamstagram.post.model.Post;
 
 @Repository
@@ -18,6 +19,8 @@ public interface PostDAO {
 			);
 
 	public Post selectPost(@Param("postId") int postId);
+	
+	public List<Post> selectPostList();
 
-	public List<Post> selectPostList(@Param("userId") int userId);
+	public List<DetailedPost> selectDetailedList(List<Post> postlist);
 }

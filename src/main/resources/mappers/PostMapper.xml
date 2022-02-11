@@ -37,8 +37,6 @@
 			, `updatedAt`
 		FROM
 			`post`
-		WHERE 
-			`post_userId` = #{userId}
 		ORDER BY `post_id` DESC
 	
 	</select>
@@ -59,7 +57,14 @@
 	</select>
 	
 	
-	
+	<select id ="selectDetailedList" resultType = "com.juhyang.hyamstagram.post.model.DetailedPost">
+	SELECT 
+			count(`like_id`)
+		FROM
+			`like`
+		WHERE
+			`like_postId` = post_id
+	</select>
 	
 	
 	

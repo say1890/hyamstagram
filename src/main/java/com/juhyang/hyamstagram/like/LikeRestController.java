@@ -18,24 +18,7 @@ public class LikeRestController {
 
 	@Autowired
 	LikeBO likeBO;
+	public int countlike;
 	
-	@GetMapping("/addLike")
-	public int addLike(
-			HttpServletRequest request,
-			Model model,
-			@RequestParam("postId")int postId) 
-	{
-		//request로부터 session을 가져옴
-		HttpSession session = request.getSession();
-		int userId = (Integer)session.getAttribute("userId");
-		String userName = (String)session.getAttribute("userName");
-	
-		
-		int result = likeBO.addLike(postId, userId,userName);
-		
-		return result;
-		
-		
-		
-	}
+
 }

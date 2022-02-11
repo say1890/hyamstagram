@@ -21,7 +21,11 @@
 	<select id = "selectLike" resultType ="com.juhyang.hyamstagram.like.model.Like">
 	select count(like_userId) from `like`
 	where `like_postId` = #{postId}
+	</select>
 	
-	
+	<select id ="selectLikeList"  resultType ="com.juhyang.hyamstagram.like.model.Like">
+	select
+	*
+	from `like`
 	</select>
 </mapper>

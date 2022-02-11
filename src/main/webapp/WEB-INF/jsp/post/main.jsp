@@ -35,7 +35,7 @@
 	<section class ="bg-success d-flex justify-content-center align-items-center">
 		
 			<section id ="post" class ="bg-light col-8 ">
-			<c:forEach var="post" items="${postList}">
+			<c:forEach var="post" items="${postAndLike}">
 				
 					  <div id = "userInfo" class ="d-flex mt-3 ">
 							  	<div id = "profile" class = "bg-success ">
@@ -47,11 +47,10 @@
 								    <c:when test="${userName eq post.post_userName}">
 								    	<div class="dropdown">
 								        <span class="dropbtn">...</span>
-								        <div class="dropdown-content">
-								        <a href="/post/delete">삭제</a>
-								        <a href="/post/edit">수정</a>
-								 
-								      	</div>
+									        <div class="dropdown-content">
+										        <a href="/post/delete">삭제</a>
+										        <a href="/post/edit">수정</a>
+									      	</div>
 								    	</div> 
 								    </c:when>
 							    </c:choose>
@@ -74,10 +73,11 @@
 					  </div>
 					  
 					  <button id ="heartBtn" data-post-id="${post.post_id}">좋아요</button>
-					  <div id ="CountLike"><span></span>${like}</div>
-  
+					  <c:forEach var = "like" items="${likeList}" >
+					  <div id ="CountLike"><span></span>${like.}</div>
+  					  </c:forEach>
 					
-					  <input type ="text"><button type="button">입력</button>
+					  <input type ="text" id ="commentInput${post.id}"><button type="button" id = "commentBtn" class ="btn" data-post-id = "${post.post_id}">입력</button>
 					  <div class ="mt-5"></div>
 					 
 			</c:forEach>
@@ -89,7 +89,19 @@
 
 <script>
 	$(document).ready(function(){
-		
+		let postId = $(this).data("post-id");
+		$.ajax({
+			type:"get",
+			url:"/post/list_view", 
+			data:{"postId":postId},
+			success:function(data) {
+				  
+			},
+			error:function() {
+				alert("에러발생");
+			}
+			
+		}); // ajax end
 		var desc =  $("#description").text();
 		
 		
@@ -98,12 +110,41 @@
 			$(this).html(desc.slice(0, 14));
 		}
 		
+		
+		
+		$("#commentBtn").on("click", function(){
+			// postId, content
+			let postId = $(this).data("post-id");
+			let content = $("#commentInput" + postId).val();
+			
+			$.ajax({
+					type: "post",
+					url: "/post/comment/create",
+					data:{"postId":postId,
+					"content":content	
+					},
+					success:function(data){
+						if(data.result == success){
+							location.reload();
+							
+						}
+						else{
+							alert("댓글 작성 실패");
+						}
+					}
+			});
+			
+			
+		});
+		
+		
+		
 		$("#heartBtn").on("click", function(){
 			let postId = $(this).data("post-id");
 			alert(postId);
 			$.ajax({
 				type:"get",
-				url:"/like/addLike", 
+				url:"/post/list_view", 
 				data:{"postId":postId},
 				success:function(data) {
 					if(data==1) {
