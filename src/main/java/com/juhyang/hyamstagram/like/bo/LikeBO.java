@@ -23,4 +23,14 @@ public class LikeBO {
 	public List<Like> getLikeList() {
 		return likeDAO.selectLikeList();
 	}
+	public boolean likeByUserId(int postId, int userId) {
+		int count = likeDAO.selectCountLikeByUserId(postId, userId);
+		
+		if(count == 0) {
+			return false;
+		} else {
+			return true;
+			
+		}
+	}
 }

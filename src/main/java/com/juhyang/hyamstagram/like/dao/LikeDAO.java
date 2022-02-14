@@ -18,4 +18,6 @@ public interface LikeDAO {
 
 	List<Like> selectLikeList();
 
+	int selectCountLikeByUserId(@Param("postId")int postId, int userId);
+
 }

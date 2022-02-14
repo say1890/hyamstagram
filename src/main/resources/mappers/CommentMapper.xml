@@ -6,9 +6,8 @@
 <insert id ="insertComment" parameterType = "map">
 insert into comment(
 comment_post_id,
-comment_id,
 comment_userId,
-commenter,
+comment_userName,
 comment,
 createdAt
 )	
@@ -18,7 +17,22 @@ values(
 , #{userName}
 ,#{content}
 ,now()
-,now()
 )
 </insert>
+
+<select id ="selectCommentListByPostId" resultType = "com.juhyang.hyamstagram.post.comment.model.Comment">
+	SELECT 
+			`comment_id`
+			, `comment_post_id`
+			, `comment_userId`
+			, `comment_userName`
+			, `comment`
+			, `createdAt`
+		FROM
+			`comment`
+		WHERE 
+			`comment_post_id` = #{postId }
+		ORDER BY `id` DESC
+</select>
+
 </mapper>

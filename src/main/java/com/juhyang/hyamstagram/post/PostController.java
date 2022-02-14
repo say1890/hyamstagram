@@ -34,9 +34,9 @@ public class PostController {
 				String userName = (String)session.getAttribute("userName");
 				
 		
-				List<DetailedPost> postAndLike = postBO.getPostList();
+				List<DetailedPost> postList = postBO.getPostList(userId);
 				
-				model.addAttribute("postAndLike", postAndLike);	
+				model.addAttribute("postList", postList);	
 			
 				return "/post/main";
 	}
