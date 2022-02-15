@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace = " com.juhyang.hyamstagram.post.comment.dao.CommentDAO">
+<mapper namespace = "com.juhyang.hyamstagram.post.comment.dao.CommentDAO">
 <insert id ="insertComment" parameterType = "map">
 insert into comment(
 comment_post_id,
@@ -32,7 +32,7 @@ values(
 			`comment`
 		WHERE 
 			`comment_post_id` = #{postId }
-		ORDER BY `id` DESC
+		ORDER BY `comment_id` DESC
 </select>
 
 </mapper>

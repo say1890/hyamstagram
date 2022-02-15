@@ -19,7 +19,9 @@ import com.juhyang.hyamstagram.post.model.Post;
 public class PostBO {
 	@Autowired
 	PostDAO postDAO;
+	@Autowired
 	LikeBO likeBO;
+	@Autowired
 	CommentBO commentBO;
 	
 	
