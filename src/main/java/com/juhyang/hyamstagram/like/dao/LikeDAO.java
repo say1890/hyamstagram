@@ -11,13 +11,14 @@ import com.juhyang.hyamstagram.like.model.Like;
 public interface LikeDAO {
 
 	int addLike(@Param("postId") int postId, 
-			@Param("userId")int userId,
-			@Param("userName")String userName);
+			@Param("userId")int userId
+			);
 
-	int selectLike(@Param("postId") int postId);
+	public Integer selectLike(@Param("postId") int postId);
 
 	List<Like> selectLikeList();
 
-	int selectCountLikeByUserId(@Param("postId")int postId, int userId);
+	int selectCountLikeByUserId(@Param("postId")int postId
+			, @Param("userId") int userId);
 
 }

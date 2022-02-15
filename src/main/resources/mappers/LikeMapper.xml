@@ -8,18 +8,16 @@
 	INSERT INTO `like` 
 		(	`like_postId`
 			,`like_userId`
-			,`like_userName`
 			, `createdAt`
 			
 		) VALUES (
 			#{postId}
 			,#{userId}
-			,#{userName}
 			, now()
 		)
 	</insert>
-	<select id = "selectLike" resultType ="com.juhyang.hyamstagram.like.model.Like">
-	select count(like_userId) from `like`
+	<select id = "selectLike" resultType ="Integer">
+	select count(*) from `like`
 	where `like_postId` = #{postId}
 	</select>
 	

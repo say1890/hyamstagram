@@ -36,6 +36,11 @@ public class PostBO {
 		return postDAO.selectPost(postId);
 	}
 
+	public int removePost(int postId) {
+		return postDAO.deletePost(postId);
+	}
+	
+	
 	public List<DetailedPost> getPostList(int userId) {
 		List<Post> postList = postDAO.selectPostList();
 		
@@ -56,7 +61,7 @@ public class PostBO {
 						//post, 댓글 매칭
 						DetailedPost DetailedPost = new DetailedPost();
 						DetailedPost.setPost(post);
-						DetailedPost.setCommentList(commentList);
+						DetailedPost.setCommentList(commentList); 
 						DetailedPost.setLike(isLike);
 						DetailedPost.setCountLike(likeCount);
 						

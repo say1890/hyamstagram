@@ -2,13 +2,10 @@ package com.juhyang.hyamstagram.like.model;
 
 public class Like {
 
-	int like_id;
-	int like_userId; 
-	String like_username;
-	int like_postId;
-	
-	
-	
+	private int like_id;
+	private int like_userId; 
+	private String like_username;
+	private int like_postId;
 	public int getLike_id() {
 		return like_id;
 	}
@@ -35,5 +32,7 @@ public class Like {
 	}
 	
 	
+	
+
 	
 }

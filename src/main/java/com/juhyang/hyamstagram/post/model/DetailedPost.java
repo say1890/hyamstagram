@@ -5,7 +5,7 @@ import java.util.List;
 import com.juhyang.hyamstagram.post.comment.model.Comment;
 
 public class DetailedPost {
-	
+	// 포스트, 댓글 리스트, 좋아요 개수 
 	private Post post;
 	private List<Comment> commentList;
 	private boolean isLike;

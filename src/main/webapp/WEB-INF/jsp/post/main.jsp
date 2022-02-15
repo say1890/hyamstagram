@@ -35,21 +35,21 @@
 	<section class ="bg-success d-flex justify-content-center align-items-center">
 		
 			<section id ="post" class ="bg-light col-8 ">
-			<c:forEach var="post" items="${postAndLike}">
+			<c:forEach var="post" items="${postList}">
 				
 					  <div id = "userInfo" class ="d-flex mt-3 ">
 							  	<div id = "profile" class = "bg-success ">
 							  		<img src = "https://file.mk.co.kr/meet/neds/2021/06/image_readtop_2021_535745_16226846584668330.jpg" width=100px;  class ="img-circle">
 							  	</div>
-							  	<div id = "UserName" class ="align-self-center mr-5 ml-3"><h2>${userName}</h2></div>
+							  	<div id = "UserName" class ="align-self-center mr-5 ml-3"><h2>${post.post.post_userName}</h2></div>
 							    
 							    <c:choose>
-								    <c:when test="${userName eq post.post_userName}">
-								    	<div class="dropdown">
-								        <span class="dropbtn">...</span>
+								    <c:when test="${userId eq post.post.post_userId}">
+								    	<div class="dropdown d-flex justify-content-end col-9">
+								        <span class="dropbtn col-2 text-center">...</span>
 									        <div class="dropdown-content">
-										        <a href="/post/delete">삭제</a>
-										        <a href="/post/edit">수정</a>
+										        <a href="#" id = "deleteBtn"  data-post-id="${post.post.post_id}">삭제</a>
+										        <a href="/post/edit" id = "editBtn">수정</a>
 									      	</div>
 								    	</div> 
 								    </c:when>
@@ -61,23 +61,55 @@
 					  <div class ="d-flex">
 						  <button type="button" class="btn btn-default"> </button>
 						  <div id ="postPicture" class ="bg-secondary">
-						  	<img src ="${post.post_imagePath}" width="200">
+						  	<img src ="${post.post.post_imagePath}" width="200">
 						  </div>
 						   <button type="button" class="btn btn-default"> > </button>
 					  </div>
 					  
 					  
 					  <div id ="description">
-						  	${post.post_content}
-						  	${post.post_id}
+						  	${post.post.post_content}
 					  </div>
 					  
-					  <button id ="heartBtn" data-post-id="${post.post_id}">좋아요</button>
-					  <c:forEach var = "like" items="${likeList}" >
-					  <div id ="CountLike"><span></span>${like.}</div>
-  					  </c:forEach>
-					
-					  <input type ="text" id ="commentInput${post.id}"><button type="button" id = "commentBtn" class ="btn" data-post-id = "${post.post_id}">입력</button>
+					  <div class ="d-flex">
+					  	<c:choose>
+					  		<c:when test = "${post.like}">
+					  			<i class="bi bi-heart-fill text-danger"></i>
+					  		</c:when>
+					  		<c:otherwise>
+					  			<i class="bi bi-heart"></i>
+					  		</c:otherwise>
+					  	</c:choose>	
+						  <button class ="heartBtn btn" data-post-id="${post.post.post_id}">좋아요</button>
+						  <span class ="ml-3 mt-1">${post.countLike}개</span>
+  					  </div>
+  					  
+					  <!-- 댓글 입력창 -->
+					  
+					  <div class ="row">
+						  <input type ="text" id ="commentInput${post.post.post_id}" class ="form-control col-6 ml-3">
+						  <button type="button" id = "commentBtn" class ="btn" data-post-id = "${post.post.post_id}">입력</button>
+					  </div>
+					  
+					  <!-- 댓글 입력창 끝 -->
+					  
+					  
+					  <!-- 댓글 -->
+					  <div class ="middle-size m-2">
+					  	<c:forEach var = "comment" items="${post.commentList }">
+					  	<div class ="mt-1 row">
+					  		<b class = "mr-3">${comment.comment_userName}</b> ${comment.comment}
+							    <c:choose>
+								    <c:when test="${userName eq comment.comment_userName}">
+								    	<button type ="button" class ="ml-5" id = "deleteCommentBtn" data-comment-id ="${comment.comment_id}" >댓글 삭제</button>
+								    </c:when>
+							    </c:choose>
+		
+					  	</div>
+					  	</c:forEach>
+					  </div>
+					  
+					  <!-- 댓글 -->
 					  <div class ="mt-5"></div>
 					 
 			</c:forEach>
@@ -113,6 +145,7 @@
 		
 		
 		$("#commentBtn").on("click", function(){
+		
 			// postId, content
 			let postId = $(this).data("post-id");
 			let content = $("#commentInput" + postId).val();
@@ -124,9 +157,9 @@
 					"content":content	
 					},
 					success:function(data){
-						if(data.result == success){
+						if(data.result == "success"){
 							location.reload();
-							
+
 						}
 						else{
 							alert("댓글 작성 실패");
@@ -139,16 +172,18 @@
 		
 		
 		
-		$("#heartBtn").on("click", function(){
+		$(".heartBtn").on("click", function(e){
+			e.preventDefault();
 			let postId = $(this).data("post-id");
-			alert(postId);
+			
 			$.ajax({
 				type:"get",
-				url:"/post/list_view", 
+				url:"/post/like", 
 				data:{"postId":postId},
 				success:function(data) {
 					if(data==1) {
 						alert("좋아요 성공");
+						location.reload();
 					} else {
 						alert("좋아요 실패");
 					}
@@ -157,8 +192,58 @@
 					alert("에러발생");
 				}
 				
-			}); // ajax end
+			}); // heart  ajax end
 		}); // btn end
+		
+		$("#deleteBtn").on("click", function(e){
+			e.preventDefault();
+			let postId = $(this).data("post-id");
+			$.ajax({
+				type:"get",
+				url:"/post/delete", 
+				data:{"postId":postId},
+				success:function(data) {
+					if(data.result=="success") {
+						alert("삭제 성공");
+						location.reload();
+					} else {
+						alert("삭제 실패");
+					}
+				},
+				error:function() {
+					alert("에러발생");
+				}
+			});// delte ajax end
+			
+		});// delete btn end 
+			
+			
+		$("#deleteCommentBtn").on("click", function(e){
+				
+				e.preventDefault();
+				let CommentId = $(this).data("comment-id");
+				alert(CommentId);
+				$.ajax({
+					type:"get",
+					url:"/post/comment/delete", 
+					data:{"CommentId":CommentId},
+					success:function(data) {
+						if(data.result=="success") {
+							alert("삭제 성공");
+							location.reload();
+						} else {
+							alert("삭제 실패");
+						}
+					},
+					error:function() {
+						alert("에러발생");
+					}
+					
+				}); // ajax end
+			});
+			
+		
+		
 		
 	}); // document end
 

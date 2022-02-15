@@ -8,7 +8,7 @@ private	int user_id;
 private	String loginId;
 private	String password;
 private	String user_name;
-private	Date createdAt ;
+private	Date createdAt;
 private	Date updatedAt;
 public int getUser_id() {
 	return user_id;
@@ -46,6 +46,10 @@ public Date getUpdatedAt() {
 public void setUpdatedAt(Date updatedAt) {
 	this.updatedAt = updatedAt;
 }
-	
+
+
+
+
+
 	
 }

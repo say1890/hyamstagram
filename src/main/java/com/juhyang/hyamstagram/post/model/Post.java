@@ -10,8 +10,6 @@ public class Post {
 	private String post_imagePath;
 	private Date createdAt;
 	private Date updatedAt;
-	
-	
 	public int getPost_id() {
 		return post_id;
 	}
@@ -54,6 +52,8 @@ public class Post {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
 	
 	
 	

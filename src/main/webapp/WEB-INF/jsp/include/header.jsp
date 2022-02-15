@@ -5,17 +5,22 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<link rel = "stylesheet" href = "/static/css/post/style.css" type = "text/css">
 </head>
+
 <body>
-<header class ="bg-info d-flex">
-		<div id ="logo" class ="ml-3"><h1><i>hyamstagram</i></h1></div>
+<header class ="d-flex">
+		<div id ="logo" class ="ml-3">
+			<h1><i>hyamstagram</i></h1>
+				<div id ="logo-second-text">hyamstagram</div>
+		</div>
 		<div id ="searchbar" class ="col-md-5 mx-5 d-flex" >
 			<input type = "text" class ="form-control">
 			<button type ="button" class="btn btn-lg btn-primary output col-5">검색</button>
 		</div>
 		<div class ="icon d-flex mt-2 float-right mr-0">
-		<c:if test="${not empty userName }">
-			<div id = "name">${userId}님 
+		<c:if test="${not empty userName}">
+			<div id = "name">${userName}님 
 			<!--${userName}  --><a href="/user/sign_out">로그아웃</a> </div>
 		</c:if>
 			<div id ="home"><img src ="/static/image/home.svg" width = 80px height = 50px></div>

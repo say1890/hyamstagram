@@ -23,4 +23,6 @@ public interface PostDAO {
 	public List<Post> selectPostList();
 
 	public List<DetailedPost> selectDetailedList(List<Post> postlist);
+
+	public int deletePost(int postId);
 }
