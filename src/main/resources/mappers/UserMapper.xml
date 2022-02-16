@@ -48,7 +48,18 @@
 
 
 </select>
-	
+<update id ="updateUser">
+	UPDATE `user`
+	SET
+		`user_name` =#{userName},
+		`loginId` =#{loginId  },
+		`introduce` =#{introduce  },
+		`imagePath` =#{imagePath  },
+		`updatedAt` = now()
+		WHERE
+		`user_id` = #{userId}
+
+</update>	
 	
 	
 	

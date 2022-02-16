@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.juhyang.hyamstagram.user.bo.UserBO;
 import com.juhyang.hyamstagram.user.model.User;
@@ -90,7 +92,22 @@ public class UserRestController {
 		
 	}
 	
-	
+	//	회원 정보 수정
+	@PostMapping("/editInformation")
+	public Map<String, String> editInformation(
+			@RequestParam(value = "userName", required =false) String userName,
+			@RequestParam(value = "loginId", required =false) String loginId,
+			@RequestParam(value = "introduce", required =false) String introduce,
+			@RequestParam(value = "file", required = true) MultipartFile file,
+			MultipartHttpServletRequest request
+			)
+	{
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		int count = userBO.editUser(userId,userName,loginId,introduce,file);
+		return null;
+		
+	}
 	
 	
 	

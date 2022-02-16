@@ -12,10 +12,29 @@ import com.juhyang.hyamstagram.like.model.Like;
 public class LikeBO {
 	@Autowired
 	LikeDAO likeDAO;
-	public int addLike(int postId, int userId){
-		return likeDAO.addLike(postId, userId);
+
+	// 좋아요 상태면 좋아요 취소 좋아요 아니면 좋아요
+	// 리턴 - > 좋아요 = true 좋아요 취소 = false
+	
+	public boolean like(int postId, int userId){
+		
+		//좋아요 상태 - > 좋아요 취소
+		if(this.likeByUserId(postId, userId)) {
+			likeDAO.deleteLike(postId, userId);
+			return false;
+		}
+		else {
+			likeDAO.addLike(postId, userId);
+			return true;
+		}
+		
+		
+		
 		
 	}
+	
+
+	
 	public Integer selectLike(int postId) {
 		
 		return likeDAO.selectLike(postId);
@@ -37,4 +56,5 @@ public class LikeBO {
 		
 		//return !(likeDAO.selectCountLikeByUserId(postId, userId) ==0 );
 	}
+	
 }

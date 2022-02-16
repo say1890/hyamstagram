@@ -1,5 +1,8 @@
 package com.juhyang.hyamstagram.like;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.juhyang.hyamstagram.like.bo.LikeBO;
-import com.juhyang.hyamstagram.post.model.DetailedPost;
 
 @RestController
 @RequestMapping("/post")
@@ -21,20 +23,40 @@ public class LikeRestController {
 
 	
 	@GetMapping("/like")
-	public int addLike(
-			@RequestParam("postId") int postId
+	public Map<String, Boolean> addLike( @RequestParam("postId") int postId
 			, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");
-		int result = likeBO.addLike(postId, userId);
-		boolean isLike = likeBO.likeByUserId(postId, userId);
 		
+		Map<String, Boolean>result = new HashMap<>();
+		
+		boolean isLike = likeBO.like(postId, userId);
+		
+		//좋아요 - > 
+		result.put("isLike",isLike);
 		return result;
 	}
 	
-	/*
-	public int removeLike(@RequestParam("postId") int postId) {
-		
-	}
-	*/
+	
+//	
+//	@GetMapping("/dislike")
+//	public Map<String, String> removeLike(
+//			@RequestParam("postId") int postId
+//			, HttpServletRequest request ) {
+//		HttpSession session = request.getSession();
+//		int userId = (Integer)session.getAttribute("userId");
+//		 Map<String, String> result = new HashMap<>();
+//		int count = likeBO.removeLike(postId, userId);
+//		if(count == 0) {
+//			result.put("result", "fail");
+//		}
+//		else {
+//			result.put("result", "success");
+//		}
+//		return result;
+//		
+//		
+//		
+//	}
+	
 }

@@ -28,11 +28,88 @@
 </head>
 <body>
 <div id = "wrap">
-이름 <input type ="text" class = "form-control" placeholder = "${userName}">
-id <input type ="text" class = "form-control" placeholder = "${userLoginId}">
-소개 <input type ="text" class = "form-control">
-<button type="button" id ="submitBtn">제출</button>	 
-
+	<div id = "inputForm" class = "col-5 mx-auto my-5 bg-success">
+		<label>정보 수정하기</label>
+		<hr>
+		<div class ="d-flex col-12 ">
+			<div class ="img-wrapper mb-3">
+				<img src = "https://img3.yna.co.kr/etc/inner/KR/2016/09/05/AKR20160905049451009_04_i_P2.jpg" 
+				class= "mt-1 rounded-circle" id ="selectPic">	
+			</div>
+			<div class ="row col-6">
+			<div class ="mt-3 col-6">${loginId}</div>
+			</div>
+		</div>
+		
+		<input type ="file" id="fileInput" class="d-none">
+		<b class ="mt-5">이름</b> 
+		<input type ="text" class = "form-control" placeholder = "${userName}" id = "userNameInput">
+		<b>id</b> 
+		<input type ="text" class = "form-control" placeholder = "${userLoginId}" id="loginIdInput">
+		<b>소개</b> 
+		<input type ="text" class = "form-control" id="introduceInput">
+		<button type="button" id ="submitBtn" class ="btn">제출</button>	 
+	</div>
 </div>
+
+
+<script>
+
+$(document).ready(function(){
+	$("#selectPic").on("click", function(){
+		$("#fileInput").click(); 
+	});
+	
+	
+	$("#submitBtn").on("click", function(){
+		
+		let userName = $("#userNameInput").val().trim();
+		let loginId = $("#loginIdInput").val().trim();
+		let introduce =  $("#introduceInput").val().trim();
+		
+		if(userName == "") {
+			return;
+		}
+		if(loginId == "") {
+			return;
+		}
+		if(introduce == "") {
+			return;
+		}
+		
+		var formData = new FormData();
+		formData.append("userName", userName);
+		formData.append("loginId", loginId);
+		formData.append("introduce", introduce);
+		formData.append("file", $("#fileInput")[0].files[0]);
+		
+		$.ajax({
+			type:"post",
+			url:"/user/editInformation",
+			data:formData,
+			enctype:"mutipart/form-data",  // 파일 업로드 필수
+			processData:false, // 파일 업로드 필수
+			contentType:false, // 파일 업로드 필수
+			success:function(data) {
+				if(data.result == "success") {
+					location.href="/post/list_view";
+				} else {
+					alert("실패");
+				}
+			},
+			error:function() {
+				alert("에러발생");
+			}
+		});
+		
+		
+		
+	});
+	
+})
+
+</script>
+
 </body>
+
 </html>

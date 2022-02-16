@@ -12,11 +12,13 @@
 <header class ="d-flex">
 		<div id ="logo" class ="ml-3">
 			<h1><i>hyamstagram</i></h1>
-				<div id ="logo-second-text">hyamstagram</div>
+				<div id ="logo-second-text">
+				<h1><i>hyamstagram</i></h1>
+				</div>
 		</div>
-		<div id ="searchbar" class ="col-md-5 mx-5 d-flex" >
+		<div id ="searchbar" class ="col-6 d-flex" >
 			<input type = "text" class ="form-control">
-			<button type ="button" class="btn btn-lg btn-primary output col-5">검색</button>
+			<button type ="button" class="btn btn-lg btn-primary output col-2">검색</button>
 		</div>
 		<div class ="id-flex mt-4 float-right mr-3">
 		<c:if test="${not empty userName}">

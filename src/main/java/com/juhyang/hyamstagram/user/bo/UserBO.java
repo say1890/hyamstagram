@@ -2,8 +2,10 @@ package com.juhyang.hyamstagram.user.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.juhyang.hyamstagram.common.EncryptUtils;
+import com.juhyang.hyamstagram.common.FileManagerService;
 import com.juhyang.hyamstagram.user.dao.UserDAO;
 import com.juhyang.hyamstagram.user.model.User;
 
@@ -42,6 +44,12 @@ public User getUser
 public boolean checkUser(String loginId) {
 	return userDAO.countUser(loginId);
 	
+}
+
+public int editUser(int userId, String userName, String loginId, String introduce, MultipartFile file) {
+	String filePath = FileManagerService.saveFile(userId, file);
+	
+	return userDAO.updateUser(userId, userName, loginId,introduce,filePath);
 }
 
 

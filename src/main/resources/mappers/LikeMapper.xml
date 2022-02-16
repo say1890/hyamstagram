@@ -16,6 +16,17 @@
 			, now()
 		)
 	</insert>
+	
+	<delete id ="deleteLike" >
+	DELETE FROM `like` 
+	WHERE
+		`like_postId` =  #{postId}
+	AND
+		`like_userId` = #{userId}
+	</delete>
+	
+	
+	
 	<select id = "selectLike" resultType ="Integer">
 	select count(*) from `like`
 	where `like_postId` = #{postId}

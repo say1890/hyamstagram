@@ -50,12 +50,16 @@
 							    
 							    <c:choose>
 								    <c:when test="${userId eq post.post.post_userId}">
+								    
+								    <!-- see more btn -->
 								    	<div class="dropdown d-flex justify-content-end col-9">
-								        <span class="dropbtn col-2 text-center">...</span>
-									        <div class="dropdown-content">
-										        <a href="#" id = "deleteBtn"  data-post-id="${post.post.post_id}">삭제</a>
-										        <a href="/post/edit" id = "editBtn">수정</a>
-									      	</div>
+								    	<!-- Button trigger modal -->
+											<button type="button" class="btn col-2 text-center" data-toggle="modal" data-target="#exampleModal"
+											id ="moreBtn"  data-post-id="${post.post.post_id}">
+											  ...
+											</button>
+								   <!-- see more btn -->      
+									    
 								    	</div> 
 								    </c:when>
 							    </c:choose>
@@ -76,19 +80,25 @@
 						  	${post.post.post_content}
 					  </div>
 					  
+					  <!-- 좋아요 -->
 					  <div class ="d-flex">
-					  <a href ="#" class = "heartBtn"  data-post-id="${post.post.post_id}">
+					  <a href ="#" class = "likeBtn "  data-post-id="${post.post.post_id}">
 					  	<c:choose>
 					  		<c:when test = "${post.like}">
 					  			<i class="bi bi-heart-fill text-danger"></i>
 					  		</c:when>
+					  		
 					  		<c:otherwise>
+					  		
 					  			<i class="bi bi-heart"></i>
+					  		
 					  		</c:otherwise>
 					  	</c:choose>	
-						</a>  
-						  <span class ="ml-3 mt-1">${post.countLike}개</span>
+					 	</a>
+						  <span class ="ml-3">${post.countLike}개</span>
   					  </div>
+  					  <!-- 좋아요 -->
+  					  
   					  
 					  <!-- 댓글 입력창 -->
 					  
@@ -123,8 +133,25 @@
 					 
 			</c:forEach>
 			</section>
-		
-	</section>
+			
+			
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+       <a href ="#" id ="deleteBtn">삭제하기</a>
+       <hr>
+       <a href = "/post/edit" id = "editBtn">수정하기</a>
+      </div>
+    </div>
+  </div>
+</div>
+	
+
+	
 
 </div>
 
@@ -181,7 +208,7 @@
 		
 		
 		
-		$(".heartBtn").on("click", function(e){
+		$(".likeBtn").on("click", function(e){
 			e.preventDefault();
 			let postId = $(this).data("post-id");
 			
@@ -191,10 +218,10 @@
 				data:{"postId":postId},
 				success:function(data) {
 					if(data==1) {
-						alert("좋아요 성공");
+						
 						location.reload();
 					} else {
-						alert("좋아요 실패");
+						location.reload();
 					}
 				},
 				error:function() {
@@ -204,9 +231,23 @@
 			}); // heart  ajax end
 		}); // btn end
 		
+		
+		var seeMorePostId;
+		
+		$("#moreBtn").on("click",function(e){
+			let postId = $(this).data("post-id");
+			seeMorePostId = postId;
+			alert(seeMorePostId);	
+			
+		})
+		
+		
 		$("#deleteBtn").on("click", function(e){
 			e.preventDefault();
-			let postId = $(this).data("post-id");
+			
+			//let postId = $(this).data("post-id");
+			let postId =seeMorePostId;
+			alert(postId);
 			$.ajax({
 				type:"get",
 				url:"/post/delete", 
