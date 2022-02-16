@@ -5,6 +5,7 @@
 <mapper namespace = "com.juhyang.hyamstagram.post.comment.dao.CommentDAO">
 <insert id ="insertComment" parameterType = "map">
 insert into comment(
+
 comment_post_id,
 comment_userId,
 comment_userName,
@@ -34,5 +35,11 @@ values(
 			`comment_post_id` = #{postId }
 		ORDER BY `comment_id` DESC
 </select>
+
+<delete id = "deleteComment" parameterType ="int">
+delete from `comment`
+where `comment_id` = #{commentId};
+</delete>
+
 
 </mapper>

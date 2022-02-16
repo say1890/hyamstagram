@@ -28,8 +28,10 @@ public class LikeRestController {
 		int userId = (Integer)session.getAttribute("userId");
 		int result = likeBO.addLike(postId, userId);
 		boolean isLike = likeBO.likeByUserId(postId, userId);
+		
 		return result;
 	}
+	
 	/*
 	public int removeLike(@RequestParam("postId") int postId) {
 		

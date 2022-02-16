@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/user")
@@ -45,4 +46,16 @@ public class UserController {
 		return "redirect:/user/signin_view";
 	}
 	
+	@GetMapping("/add_info_view")
+	public String addInfoView(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		String userLoginId = (String)session.getAttribute("userLoginId");
+		String userName = (String)session.getAttribute("userName");
+		return "/user/addInfo";
+		
+	}
+	
+
+
 }

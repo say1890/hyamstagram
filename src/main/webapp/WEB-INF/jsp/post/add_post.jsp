@@ -27,7 +27,7 @@
 </head>
 <body>
 	<div id = "wrap">
-	 	<div class ="col-10 bg-primary ">
+	 	<div class ="col-10 bg-primary mx-auto">
 			<h1 class ="text-center">새 게시물 만들기</h1>
 			<hr>
 			<section class ="d-flex col-12 bg-light card shadow-lg border-0 rounded-lg">
@@ -42,7 +42,7 @@
 						</svg>
 							
 					</div>	
-				</div>  // card section end
+				</div>  
 				
 				<input  multiple="multiple" type ="file" class="mt-5 form-control d-none" id="fileInput">
 			 </div>	
@@ -51,13 +51,16 @@
 				<!-- 글쓰기 div -->
 				  <div class ="col-6">
 					<div class ="card-body">
-						<div id = "postSection" class ="bg-danger justify-content-center">
+						<div id = "postSection" class ="justify-content-center">
 							<div>
-								 <div class ="col-2 d-flex mt-3">
+								 <div class ="d-flex mt-5 col-9">
 									 <img id ="profileImage"
-									  src = "https://w.namu.la/s/43a3472858577498e23c3701af9afad33de29d4a6235e3a9e8442af0c61ea63a6a688e30777396471edc221e21671196cd0f9d8d1ea0ca3c970d7cbc45dae1ba4e82c9f0b4199882ace03d432167f521">
-									 <h3 class ="ml-3 justify-content-center">${userName}</h3>
-								 </div>
+									  src = "https://w.namu.la/s/43a3472858577498e23c3701af9afad33de29d4a6235e3a9e8442af0c61ea63a6a688e30777396471edc221e21671196cd0f9d8d1ea0ca3c970d7cbc45dae1ba4e82c9f0b4199882ace03d432167f521"
+									  class = "mt-3 rounded-circle">
+							     	<h3 class ="justify-content-center col-12 my-auto">${userName}</h3>
+							     </div>
+									 
+								
 								 
 								<div class ="mt-4" id="uploadImage" class ="bg-success col-5">
 									
@@ -75,7 +78,7 @@
 						</div>
 					</div>
 					</div>
-					</div> // row
+					</div> 
 			</section>
 		</div>
 	</div>

@@ -18,18 +18,24 @@
 			<input type = "text" class ="form-control">
 			<button type ="button" class="btn btn-lg btn-primary output col-5">°Ë»ö</button>
 		</div>
-		<div class ="icon d-flex mt-2 float-right mr-0">
+		<div class ="id-flex mt-4 float-right mr-3">
 		<c:if test="${not empty userName}">
 			<div id = "name">${userName}´Ô 
 			<!--${userName}  --><a href="/user/sign_out">·Î±×¾Æ¿ô</a> </div>
 		</c:if>
-			<div id ="home"><img src ="/static/image/home.svg" width = 80px height = 50px></div>
+		</div>
+		
+			<a href = "/post/list_view" class ="btn" id ="home">
+				<i class="bi bi-house-door"></i>
+			</a>
 			<a href="/post/add_post_view" class ="btn" id ="postBtn" >
-				<img src ="/static/image/note.svg" width = 80px height = 50px >
+				<i class="bi bi-pencil-square"></i>
 			</a>
 			
-			<div id ="profile"><img src ="/static/image/profile.svg" width = 80px height = 50px></div>
-		</div>
+			<a href = "/user/add_info_view" class ="btn" id ="profile">
+				<i class="bi bi-person-circle"></i>
+			</a>
+
 	</header>
 </body>
 </html>

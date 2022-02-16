@@ -14,8 +14,6 @@ body{margin:0}
 #wrap{
 	
 	width:1200px;
-	
-	float:none;
 	margin:0 auto;
 }
 
@@ -90,12 +88,25 @@ body{margin:0}
 
 
 
-
 header{
 	width:1200px;
 	height:80px;
 
 }
+
+	#profile{
+		font-size:40px;
+	}
+	
+	#home{
+		font-size:40px;
+	}
+	
+	#postBtn{
+		font-size:40px;
+	}
+
+
 
 section{
 	      

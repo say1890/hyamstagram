@@ -46,7 +46,14 @@ public class CommentRestController {
 	@GetMapping("/delete")
 	public Map<String,String> deleteComment(@RequestParam("CommentId") int CommentId){
 		
-		return null;
+		Map<String,String> result = new HashMap<>();
+		int count = commentBO.removeComment(CommentId);
+		if(count == 1) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "fail");
+		}
+		return result;
 		
 	}
 }

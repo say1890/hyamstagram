@@ -10,12 +10,15 @@
 
        <!-- bootstrap CDN link -->
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	  <!-- css -->
+		<!--  부트스트랩 아이콘 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+	  
+	 <!-- css -->
 		
 		<link rel = "stylesheet" href = "/static/css/post/style.css" type = "text/css">
 
@@ -38,10 +41,12 @@
 			<c:forEach var="post" items="${postList}">
 				
 					  <div id = "userInfo" class ="d-flex mt-3 ">
-							  	<div id = "profile" class = "bg-success ">
-							  		<img src = "https://file.mk.co.kr/meet/neds/2021/06/image_readtop_2021_535745_16226846584668330.jpg" width=100px;  class ="img-circle">
+							  	<div id = "profile">
+							  		<i class="bi bi-person-circle"></i>
 							  	</div>
-							  	<div id = "UserName" class ="align-self-center mr-5 ml-3"><h2>${post.post.post_userName}</h2></div>
+							  	<div id = "UserName" class ="align-self-center mr-5 ml-3">
+							  		<h2>${post.post.post_userName}</h2>
+							  	</div>
 							    
 							    <c:choose>
 								    <c:when test="${userId eq post.post.post_userId}">
@@ -72,6 +77,7 @@
 					  </div>
 					  
 					  <div class ="d-flex">
+					  <a href ="#" class = "heartBtn"  data-post-id="${post.post.post_id}">
 					  	<c:choose>
 					  		<c:when test = "${post.like}">
 					  			<i class="bi bi-heart-fill text-danger"></i>
@@ -80,7 +86,7 @@
 					  			<i class="bi bi-heart"></i>
 					  		</c:otherwise>
 					  	</c:choose>	
-						  <button class ="heartBtn btn" data-post-id="${post.post.post_id}">좋아요</button>
+						</a>  
 						  <span class ="ml-3 mt-1">${post.countLike}개</span>
   					  </div>
   					  
@@ -101,7 +107,10 @@
 					  		<b class = "mr-3">${comment.comment_userName}</b> ${comment.comment}
 							    <c:choose>
 								    <c:when test="${userName eq comment.comment_userName}">
-								    	<button type ="button" class ="ml-5" id = "deleteCommentBtn" data-comment-id ="${comment.comment_id}" >댓글 삭제</button>
+								    	<a href ="#"  id = "deleteCommentBtn"  class ="ml-5 col-1"  data-comment-id ="${comment.comment_id}">
+								    	 	<i class="bi bi-trash-fill"></i>
+								    	</a>
+								    	
 								    </c:when>
 							    </c:choose>
 		
@@ -222,7 +231,6 @@
 				
 				e.preventDefault();
 				let CommentId = $(this).data("comment-id");
-				alert(CommentId);
 				$.ajax({
 					type:"get",
 					url:"/post/comment/delete", 
