@@ -3,6 +3,7 @@ package com.juhyang.hyamstagram.post;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,10 +57,13 @@ public class PostRestController {
 	
 	@GetMapping("/delete")
 	public Map<String,String> deletePost(
-			@RequestParam("postId") int postId
+			@RequestParam("postId") int postId,
+			HttpServletRequest request
 			){
 		
-		int count = postBO.removePost(postId);
+		HttpSession session = request.getSession();
+		int userId = (Integer)session.getAttribute("userId");
+		int count = postBO.removePost(postId,userId);
 		
 		Map<String, String> result = new HashMap<>();
 		

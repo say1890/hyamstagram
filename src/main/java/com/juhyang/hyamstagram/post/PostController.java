@@ -28,8 +28,8 @@ public class PostController {
 				int userId = (Integer)session.getAttribute("userId");
 				String userName = (String)session.getAttribute("userName");	
 				String imagePath = (String)session.getAttribute("imagePath");
-				List<DetailedPost> postList = postBO.getPostList(userId);
 				
+				List<DetailedPost> postList = postBO.getPostList(userId);
 				model.addAttribute("postList", postList);	
 			
 				return "/post/main";

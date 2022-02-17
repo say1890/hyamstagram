@@ -105,12 +105,28 @@ public class UserRestController {
 			MultipartHttpServletRequest request
 			)
 	{
-		HttpSession session = request.getSession();
 		
+		HttpSession session = request.getSession();
+		User user = userBO.getAfterEditUser(loginId);
+		
+		session.setAttribute("userId", user.getUser_id());
+		session.setAttribute("userLoginId", user.getLoginId());
+		session.setAttribute("userName", user.getUser_name());
+		session.setAttribute("imagePath", user.getImagePath());
 		
 		int userId = (Integer)session.getAttribute("userId");
 		int count = userBO.editUser(userId,userName,loginId,introduce,file);
-		return null;
+		Map<String, String> result = new HashMap<>();
+		if(count == 0) {
+			result.put("result", "fail");
+		}
+		else {
+			result.put("result", "success");
+		}
+		return result;
+		
+		
+		
 		
 		
 	}

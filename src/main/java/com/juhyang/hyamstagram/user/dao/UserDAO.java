@@ -29,4 +29,9 @@ public interface UserDAO {
 			@Param("imagePath") String imagePath
 			);
 
+	public User selectAfterEditUser(
+			@Param("loginId")String loginId);
+
+	public String selectImagePath(@Param("userId") int post_userId);
+
 }

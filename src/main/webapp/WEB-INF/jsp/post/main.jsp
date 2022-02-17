@@ -41,11 +41,11 @@
 			<c:forEach var="post" items="${postList}">
 				
 					  <div id = "userInfo" class ="d-flex mt-3 ">
-							  	<div id = "profile">
-							  		<img src = "${imagePath}">
+							  	<div id = "profile" class ="img-wrapper">
+							  		<img src = "${post.userProfile}" class = "rounded-circle">
 							  	</div>
 							  	<div id = "UserName" class ="align-self-center mr-5 ml-3">
-							  		<h2>${post.post.post_userName}</h2>
+							  		<b>${post.post.post_userName}</b>
 							  		
 							  	</div>
 							    
@@ -134,6 +134,7 @@
 					 
 			</c:forEach>
 			</section>
+	</section>
 			
 			
 

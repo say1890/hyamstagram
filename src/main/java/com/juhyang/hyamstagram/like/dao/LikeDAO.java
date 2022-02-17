@@ -24,6 +24,8 @@ public interface LikeDAO {
 	int selectCountLikeByUserId(@Param("postId")int postId
 			, @Param("userId") int userId);
 
+	int deleteLikeByPostId(@Param("postId") int postId);
+
 	
 
 }

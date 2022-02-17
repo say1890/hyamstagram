@@ -14,6 +14,7 @@ import com.juhyang.hyamstagram.post.comment.model.Comment;
 import com.juhyang.hyamstagram.post.dao.PostDAO;
 import com.juhyang.hyamstagram.post.model.DetailedPost;
 import com.juhyang.hyamstagram.post.model.Post;
+import com.juhyang.hyamstagram.user.bo.UserBO;
 
 @Service
 public class PostBO {
@@ -24,6 +25,8 @@ public class PostBO {
 	@Autowired
 	CommentBO commentBO;
 	
+	@Autowired
+	UserBO userBO;
 	
 	
 	public int addPost(int userId, String content, MultipartFile file, String userName, boolean commentSetting) {
@@ -36,8 +39,30 @@ public class PostBO {
 		return postDAO.selectPost(postId);
 	}
 
-	public int removePost(int postId) {
+	public int removePost(int postId, int userId) {
+		
+		//파일 삭제
+		Post post = postDAO.selectPost(postId);
+		//좋아요 삭제
+		likeBO.deleteLikeByPostId(postId);
+		 	// -> 좋아요 몇개가 삭제됐는지 리턴 
+		
+		if(post.getPost_userId() != userId) {
+			return 0;
+		}
+		
+		//댓글 삭제
+		commentBO.deleteCommentWithPost(postId);
+		
+
+		
+		FileManagerService.removeFile(post.getPost_imagePath());
+		
+		
+		//포스트 삭제
 		return postDAO.deletePost(postId);
+		
+		
 	}
 	
 	
@@ -54,6 +79,8 @@ public class PostBO {
 						// 해당하는 포스트를 현재 로그인한 사용자가 좋아요 했는지 확인
 						boolean isLike = likeBO.likeByUserId(post.getPost_id(), userId);
 						
+						//사용자의 프로필 사진 주소 받아오기.
+						String userProfile  = userBO.getImagePath(post.getPost_userId());
 						
 						//  좋아요 개수
 						int likeCount = likeBO.selectLike(post.getPost_id());
@@ -64,7 +91,7 @@ public class PostBO {
 						DetailedPost.setCommentList(commentList); 
 						DetailedPost.setLike(isLike);
 						DetailedPost.setCountLike(likeCount);
-						
+						DetailedPost.setUserProfile(userProfile);
 						DetailedPostList.add(DetailedPost);
 		}
 		return DetailedPostList;

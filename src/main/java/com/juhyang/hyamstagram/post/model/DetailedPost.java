@@ -10,7 +10,7 @@ public class DetailedPost {
 	private List<Comment> commentList;
 	private boolean isLike;
 	private int countLike;
-	
+	private String userProfile;
 	
 	public Post getPost() {
 		return post;
@@ -38,6 +38,12 @@ public class DetailedPost {
 	}
 	public void setCountLike(int countLike) {
 		this.countLike = countLike;
+	}
+	public String getUserProfile() {
+		return userProfile;
+	}
+	public void setUserProfile(String userProfile) {
+		this.userProfile = userProfile;
 	}
 	
 	

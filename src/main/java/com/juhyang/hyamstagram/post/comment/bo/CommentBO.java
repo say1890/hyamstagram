@@ -21,4 +21,8 @@ public class CommentBO {
 	public int removeComment(int CommentId) {
 		return commentDAO.deleteComment(CommentId);
 	}
+	public int deleteCommentWithPost(int postId) {
+		return commentDAO.deleteCommentWithPost(postId);
+		
+	}
 }

@@ -6,18 +6,45 @@
 
 <select id ="selectUser" parameterType = "map" resultType = "com.juhyang.hyamstagram.user.model.User">
 		SELECT
-	user_id,
-	loginId,
-	password,
-	user_name,
-	createdAt,
-	updatedAt
+			user_id,
+			loginId,
+			password,
+			user_name,
+			createdAt,
+			updatedAt,
+			imagePath
 		FROM
-	`user`
+			`user`
 		WHERE
-	loginId = #{loginId}
+			loginId = #{loginId}
 		AND
-	password = #{password}
+			password = #{password}
+	
+</select>
+
+<select id ="selectAfterEditUser" resultType = "com.juhyang.hyamstagram.user.model.User">
+	SELECT
+		user_id,
+		loginId,
+		password,
+		user_name,
+		createdAt,
+		updatedAt,
+		introduce,
+		imagePath
+	FROM
+		`user`
+	WHERE
+		loginId = #{loginId}
+
+</select>
+<select id ="selectImagePath" resultType="string">
+	SELECT
+	`imagePath`
+	FROM
+	`user`
+	WHERE
+	`user_id` = #{userId}
 	
 </select>
 <insert id ="insertUser">

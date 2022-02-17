@@ -36,8 +36,7 @@
 		<hr>
 		<div class ="d-flex col-12 ">
 			<div class ="img-wrapper mb-4">
-				<img src = "https://img3.yna.co.kr/etc/inner/KR/2016/09/05/AKR20160905049451009_04_i_P2.jpg" 
-				class= "mt-1 rounded-circle" id ="selectPic">	
+				<img src = "${imagePath}" class = "rounded-circle" id ="selectPic">
 			</div>
 			<div class ="row col-6">
 			<div class ="mt-3 col-6">${userLoginId}</div>
@@ -46,9 +45,15 @@
 		
 		<input type ="file" id="fileInput" class="d-none">
 		<b class ="mt-5">이름</b> 
-		<input type ="text" class = "form-control" placeholder = "${userName}" id = "userNameInput">
+		<input type ="text" class = "form-control" value = "${userName}" id = "userNameInput">
+		
 		<b>id</b> 
-		<input type ="text" class = "form-control" placeholder = "${userLoginId}" id="loginIdInput">
+			<input type ="text" class = "form-control" value = "${userLoginId}" id="loginIdInput">
+			<div id = "lengthText" class ="d-none"><small class="text-danger">ID는 5자 이상으로 입력해주세요.</small></div>
+			<div id="duplicateText" class="d-none"><small class="text-danger">중복된 ID 입니다</small></div>
+			<div id="availableText" class="d-none"><small class="text-info">사용 가능한 ID 입니다.</small></div>
+			
+		
 		<b>소개</b> 
 		<input type ="text" class = "form-control" id="introduceInput">
 		<button type="button" id ="submitBtn" class ="btn mt-3">제출</button>	 
@@ -59,9 +64,53 @@
 <script>
 
 $(document).ready(function(){
+	
+	var IDDuplicate = false;
 	$("#selectPic").on("click", function(){
 		$("#fileInput").click(); 
 	});
+	
+	$("#loginIdInput").on("propertychange change keyup paste input",function(){
+		var loginId = $("#loginIdInput").val();
+		
+		
+		if(loginId.length<=4){
+			$("#lengthText").removeClass("d-none");
+		}
+		else{
+			$("#lengthText").addClass("d-none");
+		}
+		
+
+		if(loginId=="${userLoginId}"){
+			$("#duplicateText").addClass("d-none");
+			IDDuplicate = false;
+		}
+			
+		 $.ajax({
+	            url:'/user/idCheck', //Controller에서 인식할 주소
+	            type:'post', //POST 방식으로 전달
+	            data:{"loginId":loginId},
+	            success:function(data){
+	                if(data.is_duplication){
+	                	$("#duplicateText").removeClass("d-none");
+	                	 IDDuplicate = true;
+	                	return;
+	                }
+	                else{
+	                	$("#duplicateText").addClass("d-none");
+	                	IDDuplicate = false;
+	                }
+	               		
+	               		
+	            },
+	            error:function(e){
+	                alert("에러 발생");
+	            }
+	        });
+		
+	})
+	
 	
 	
 	$("#submitBtn").on("click", function(){
@@ -73,6 +122,16 @@ $(document).ready(function(){
 		if(userName == "" && loginId == "" && introduce == "" && fileExist =="") {
 			location.href="/post/list_view";
 		}
+		
+		if(IDDuplicate == true){
+			alert("아이디가 중복됐습니다.");
+			return;
+		}
+		
+	
+		
+		
+		
 		
 		var formData = new FormData();
 		formData.append("userName", userName);

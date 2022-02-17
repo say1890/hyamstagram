@@ -37,6 +37,12 @@ public User getUser
 	String encPw = EncryptUtils.md5(password);
 	return userDAO.selectUser(loginId, encPw);
 	
+  }
+
+public User getAfterEditUser(
+		String loginId
+		) {
+	return userDAO.selectAfterEditUser(loginId);
 }
 
 
@@ -50,6 +56,11 @@ public int editUser(int userId, String userName, String loginId, String introduc
 	String filePath = FileManagerService.saveFile(userId, file);
 	
 	return userDAO.updateUser(userId, userName, loginId,introduce,filePath);
+}
+
+public String getImagePath(int post_userId) {
+	
+	return userDAO.selectImagePath(post_userId);
 }
 
 

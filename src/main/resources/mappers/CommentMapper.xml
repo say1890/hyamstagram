@@ -40,6 +40,9 @@ values(
 delete from `comment`
 where `comment_id` = #{commentId};
 </delete>
-
+<delete id ="deleteCommentWithPost">
+delete from `comment`
+where `comment_post_id` = ${postId}
+</delete>
 
 </mapper>

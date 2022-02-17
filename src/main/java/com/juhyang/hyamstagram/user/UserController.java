@@ -52,6 +52,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		String userName = (String)session.getAttribute("userName");
+		String imagePath = (String)session.getAttribute("imagePath");
 		return "/user/addInfo";
 		
 	}
