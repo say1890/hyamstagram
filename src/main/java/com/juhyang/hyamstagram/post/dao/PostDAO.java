@@ -14,7 +14,8 @@ public interface PostDAO {
 			@Param("userId") int userId, 
 			@Param("content") String content,
 			@Param("imagePath") String imagePath,
-			@Param("userName")String userName
+			@Param("userName")String userName, 
+			@Param("commentSetting") boolean commentSetting
 			
 			);
 

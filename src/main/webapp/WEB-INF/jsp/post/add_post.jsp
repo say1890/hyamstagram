@@ -55,7 +55,7 @@
 							<div>
 								 <div class ="d-flex mt-5 col-9">
 									 <img id ="profileImage"
-									  src = "https://w.namu.la/s/43a3472858577498e23c3701af9afad33de29d4a6235e3a9e8442af0c61ea63a6a688e30777396471edc221e21671196cd0f9d8d1ea0ca3c970d7cbc45dae1ba4e82c9f0b4199882ace03d432167f521"
+									  src = "${imagePath}"
 									  class = "mt-3 rounded-circle">
 							     	<h3 class ="justify-content-center col-12 my-auto">${userName}</h3>
 							     </div>
@@ -70,7 +70,7 @@
 								<div class ="row justify-content-between">
 									<details class ="ml-3">
 										<summary>고급 설정</summary>
-										<span><input type="checkbox"> <label>댓글 기능 해제</label></span>
+										<span><input type="checkbox" id="disallowComment"> <label>댓글 기능 해제</label></span>
 									</details>
 									<button type = "button" id ="uploadBtn" class ="btn mr-3">업로드</button>
 								</div>
@@ -93,6 +93,16 @@
 		});
 		
 		$("#uploadBtn").on("click", function(){
+			let commentSetting;
+			if($('#disallowComment').is(':checked')){
+				 commentSetting =  true; 
+				 // 댓글 기능 해제시 true
+			}
+			else{
+				commentSetting = false;
+				// 댓글 기능 설정시 false
+			}
+			alert(commentSetting);
 			
 			let content = $("#contentInput").val().trim();
 			if(content == "") {
@@ -102,6 +112,7 @@
 			var formData = new FormData();
 			
 			formData.append("content", content);
+			formData.append("commentSetting", commentSetting);
 			formData.append("file", $("#fileInput")[0].files[0]);
 			
 			$.ajax({

@@ -27,6 +27,7 @@ public class PostController {
 				HttpSession session = request.getSession();
 				int userId = (Integer)session.getAttribute("userId");
 				String userName = (String)session.getAttribute("userName");	
+				String imagePath = (String)session.getAttribute("imagePath");
 				List<DetailedPost> postList = postBO.getPostList(userId);
 				
 				model.addAttribute("postList", postList);	

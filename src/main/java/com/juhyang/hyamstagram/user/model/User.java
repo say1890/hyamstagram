@@ -8,8 +8,18 @@ private	int user_id;
 private	String loginId;
 private	String password;
 private	String user_name;
+private String imagePath;
 private	Date createdAt;
 private	Date updatedAt;
+
+
+
+public String getImagePath() {
+	return imagePath;
+}
+public void setImagePath(String imagePath) {
+	this.imagePath = imagePath;
+}
 public int getUser_id() {
 	return user_id;
 }

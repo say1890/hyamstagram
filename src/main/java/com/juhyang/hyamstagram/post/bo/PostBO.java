@@ -26,10 +26,10 @@ public class PostBO {
 	
 	
 	
-	public int addPost(int userId, String content, MultipartFile file, String userName) {
+	public int addPost(int userId, String content, MultipartFile file, String userName, boolean commentSetting) {
 		// 파일을 컴퓨터 (서버)에 저장하고, 클라이언트가(브라우저) 가 접근 가능한 주소를 만들어 낸다.  
 	String filePath = FileManagerService.saveFile(userId, file);
-	return postDAO.insertPost(userId, content, filePath,userName);
+	return postDAO.insertPost(userId, content, filePath,userName,commentSetting);
 	}
 	
 	public Post getPost(int postId) {

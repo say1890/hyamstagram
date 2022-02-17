@@ -42,10 +42,11 @@
 				
 					  <div id = "userInfo" class ="d-flex mt-3 ">
 							  	<div id = "profile">
-							  		<i class="bi bi-person-circle"></i>
+							  		<img src = "${imagePath}">
 							  	</div>
 							  	<div id = "UserName" class ="align-self-center mr-5 ml-3">
 							  		<h2>${post.post.post_userName}</h2>
+							  		
 							  	</div>
 							    
 							    <c:choose>
@@ -116,7 +117,7 @@
 					  	<div class ="mt-1 row">
 					  		<b class = "mr-3">${comment.comment_userName}</b> ${comment.comment}
 							    <c:choose>
-								    <c:when test="${userName eq comment.comment_userName}">
+								    <c:when test="${userId eq comment.comment_userId}">
 								    	<a href ="#"  id = "deleteCommentBtn"  class ="ml-5 col-1"  data-comment-id ="${comment.comment_id}">
 								    	 	<i class="bi bi-trash-fill"></i>
 								    	</a>

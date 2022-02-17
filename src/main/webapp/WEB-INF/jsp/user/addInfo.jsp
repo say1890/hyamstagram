@@ -29,15 +29,18 @@
 <body>
 <div id = "wrap">
 	<div id = "inputForm" class = "col-5 mx-auto my-5 bg-success">
-		<label>정보 수정하기</label>
+		<div class ="mt-3">
+			<h3 class ="text-center">정보 수정하기</h3>
+		</div>
+		
 		<hr>
 		<div class ="d-flex col-12 ">
-			<div class ="img-wrapper mb-3">
+			<div class ="img-wrapper mb-4">
 				<img src = "https://img3.yna.co.kr/etc/inner/KR/2016/09/05/AKR20160905049451009_04_i_P2.jpg" 
 				class= "mt-1 rounded-circle" id ="selectPic">	
 			</div>
 			<div class ="row col-6">
-			<div class ="mt-3 col-6">${loginId}</div>
+			<div class ="mt-3 col-6">${userLoginId}</div>
 			</div>
 		</div>
 		
@@ -48,7 +51,7 @@
 		<input type ="text" class = "form-control" placeholder = "${userLoginId}" id="loginIdInput">
 		<b>소개</b> 
 		<input type ="text" class = "form-control" id="introduceInput">
-		<button type="button" id ="submitBtn" class ="btn">제출</button>	 
+		<button type="button" id ="submitBtn" class ="btn mt-3">제출</button>	 
 	</div>
 </div>
 
@@ -62,19 +65,13 @@ $(document).ready(function(){
 	
 	
 	$("#submitBtn").on("click", function(){
-		
+		let fileExist = $("#fileInput").val();
 		let userName = $("#userNameInput").val().trim();
 		let loginId = $("#loginIdInput").val().trim();
 		let introduce =  $("#introduceInput").val().trim();
 		
-		if(userName == "") {
-			return;
-		}
-		if(loginId == "") {
-			return;
-		}
-		if(introduce == "") {
-			return;
+		if(userName == "" && loginId == "" && introduce == "" && fileExist =="") {
+			location.href="/post/list_view";
 		}
 		
 		var formData = new FormData();

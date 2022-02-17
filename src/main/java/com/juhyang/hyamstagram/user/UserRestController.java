@@ -26,6 +26,7 @@ public class UserRestController {
 	@Autowired
 	UserBO userBO;
 	
+
 	// 로그인
 	@PostMapping("/sign_in")
 	public Map<String, String> signIn(
@@ -33,6 +34,7 @@ public class UserRestController {
 			@RequestParam("password") String password,
 			HttpServletRequest request
 			) {
+		
 		User user = userBO.getUser(loginId, password);
 		Map<String, String> result = new HashMap<>();
 		if(user!=null) {
@@ -45,6 +47,7 @@ public class UserRestController {
 			session.setAttribute("userId", user.getUser_id());
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userName", user.getUser_name());
+			session.setAttribute("imagePath", user.getImagePath());
 			
 		}
 		else {
@@ -98,14 +101,17 @@ public class UserRestController {
 			@RequestParam(value = "userName", required =false) String userName,
 			@RequestParam(value = "loginId", required =false) String loginId,
 			@RequestParam(value = "introduce", required =false) String introduce,
-			@RequestParam(value = "file", required = true) MultipartFile file,
+			@RequestParam(value = "file", required = false) MultipartFile file,
 			MultipartHttpServletRequest request
 			)
 	{
 		HttpSession session = request.getSession();
+		
+		
 		int userId = (Integer)session.getAttribute("userId");
 		int count = userBO.editUser(userId,userName,loginId,introduce,file);
 		return null;
+		
 		
 	}
 	
