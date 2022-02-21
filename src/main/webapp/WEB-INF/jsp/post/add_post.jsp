@@ -17,7 +17,7 @@
 
 	  <!-- css -->
 		
-	<link rel = "stylesheet" href = "/static/css/post/style.css" type = "text/css">
+	<link rel = "stylesheet" href = "/static/css/post/addPost.css" type = "text/css">
 	
 	<!-- font -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">

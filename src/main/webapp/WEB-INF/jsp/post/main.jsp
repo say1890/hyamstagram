@@ -39,7 +39,8 @@
 	<c:import url ="/WEB-INF/jsp/include/header.jsp" />
 	<section class ="d-flex justify-content-center align-items-center">
 		
-			<section id ="post" class ="col-10 ">
+			<section id ="post" class ="col-12 d-flex justify-content-center">
+			<section class ="col-10">
 			<c:forEach var="post" items="${postList}">
 				
 					  <div id = "userInfo" class ="d-flex mt-3 ">
@@ -152,6 +153,7 @@
 					 
 			</c:forEach>
 			</section>
+		</section> <!-- post section end -->
 	</section>
 			
 			
@@ -258,7 +260,6 @@
 		$("#moreBtn").on("click",function(e){
 			let postId = $(this).data("post-id");
 			seeMorePostId = postId;
-			alert(seeMorePostId);	
 			
 		})
 		
@@ -268,7 +269,6 @@
 			
 			//let postId = $(this).data("post-id");
 			let postId =seeMorePostId;
-			alert(postId);
 			$.ajax({
 				type:"get",
 				url:"/post/delete", 

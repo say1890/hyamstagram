@@ -43,17 +43,7 @@ html,
 	      margin: auto; }
 
 
-#profileImage
-{
-	width:100px;
-	height:100px;
-	margin:0 auto;
-}
-#uploadImage{
-	width:453px;
-	height:400px;
 
-}
 #contentInput{
 	background-color: pink;
 	color:white;
@@ -107,9 +97,6 @@ section>#post{
 	
 }
 
-#selectPic{
-	margin-top : 193px;
-}
 
 
 

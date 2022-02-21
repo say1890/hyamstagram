@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+*{
+	font-family: 'Gowun Dodum', sans-serif;
+}
+
+
+html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+       
+        
+      }
+#wrap{
+	width:1200px;
+	height:917px;
+	margin:auto;
+	background-color: pink;	
+	
+}
+
+#profileImage
+{
+	width:100px;
+	height:100px;
+	margin:0 auto;
+}
+#uploadImage{
+	width:453px;
+	height:400px;
+
+}
+
+#selectPic{
+	margin-top : 193px;
+}

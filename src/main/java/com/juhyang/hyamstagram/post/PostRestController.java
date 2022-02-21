@@ -48,16 +48,12 @@ public class PostRestController {
 		
 		Map<String, String> result = new HashMap<>();
 		
-		for(int i=0; i<=content.length();i++) {
+		
 			if(content.contains("#")) {
 				int postId = postBO.getPostid(userId);
 				postBO.addHashTag(userId, postId,content);
 			}
-			else{
-				break; 
-			}
-		}
-		
+			
 		
 		
 	
