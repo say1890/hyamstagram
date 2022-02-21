@@ -1,6 +1,7 @@
 package com.juhyang.hyamstagram.post;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,13 +41,35 @@ public class PostRestController {
 		// 현재 로그인된 사용자의 user table id(pk)
 		int userId = (Integer)session.getAttribute("userId");
 		String userName = (String)session.getAttribute("userName");
+		content=content + " ";
 		int count = postBO.addPost(
 				userId, content, file,userName,commentSetting);
 		
+		
 		Map<String, String> result = new HashMap<>();
+		
+		for(int i=0; i<=content.length();i++) {
+			if(content.contains("#")) {
+				int postId = postBO.getPostid(userId);
+				postBO.addHashTag(userId, postId,content);
+			}
+			else{
+				break; 
+			}
+		}
+		
+		
+		
+	
+
+		
+		
+		
 		
 		if(count == 1) {
 			result.put("result", "success");
+			
+			
 		} else {
 			result.put("result", "fail");
 		}

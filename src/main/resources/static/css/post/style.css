@@ -6,16 +6,24 @@ body{margin:0}
 *{
 	font-family: 'Gowun Dodum', sans-serif;
 }
-#logo-second-text{
-	text:pink;
-	opacity:0.7;
-}
+
+html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+       
+        
+      }
+
 
 #wrap{
-	
 	width:1200px;
-	margin:0 auto;
+	margin:auto;
+	background-color: pink;	
+	
 }
+
 
 
 .img-wrapper{
@@ -42,8 +50,8 @@ body{margin:0}
 	margin:0 auto;
 }
 #uploadImage{
-	width:300px;
-	height:300px;
+	width:453px;
+	height:400px;
 
 }
 #contentInput{
@@ -67,7 +75,8 @@ body{margin:0}
 
 header{
 	width:1200px;
-	height:80px;
+	height:63px;
+	background-color:rgb(255, 255, 255);
 
 }
 
@@ -88,7 +97,8 @@ header{
 section{
 	      
 	width:1200px;
-
+	height:1800px;
+	background-color:#ffe1e1;
 	
 }
 
@@ -97,4 +107,47 @@ section>#post{
 	
 }
 
+#selectPic{
+	margin-top : 193px;
+}
+
+
+
+
+/*Neon*/
+i {
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1;
+  text-decoration: none;
+  color: #fff;
+}
+
+i:nth-child(1) {
+  font-family: Pacifico;
+  animation: neon6 1.5s ease-in-out infinite alternate;
+}
+/*glow*/
+
+
+
+
+@keyframes neon6 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+      0 0 60px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+      0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+  }
+}
+/*Make stuff responsive*/
+
+@media (max-width: 650px) {
+  p {
+    font-size: 3.5em;
+  }
+}
 

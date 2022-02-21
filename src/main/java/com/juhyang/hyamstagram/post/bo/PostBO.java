@@ -103,6 +103,43 @@ public class PostBO {
 	
 		return postDAO.selectDetailedList(postlist);
 	}
+
+	public int getPostid(int userId) {
+		return postDAO.selectPostId(userId);
+		
+	}
+
+	public void addHashTag(int userId, int postId, String content) {
+		if(content.contains("#")) {
+			 String target = "#";
+			 ArrayList<String> hashtags = new ArrayList<>();   
+			 int target_num = content.indexOf(target); 
+			    while(target_num != -1){
+			        String result = content.substring(target_num,(content.substring(target_num).indexOf(" ")+target_num));
+			        target_num = content.indexOf(target,target_num+target.length());
+			        hashtags.add(result);
+			       
+			    }
+			   int repeat = hashtags.size()-1;
+			   while(repeat != -1){
+				    postDAO.insertHashTag(userId, postId, hashtags.get(repeat));
+			        repeat --;
+			   }
+			  
+			    	
+			
+		}
+		
+		//
+		
+				
+			
+		}
+		
+		
+
+
+	
 	
 
 }

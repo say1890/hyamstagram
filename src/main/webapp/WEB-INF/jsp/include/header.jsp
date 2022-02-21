@@ -12,18 +12,21 @@
 <header class ="d-flex">
 		<div id ="logo" class ="ml-3">
 			<h1><i>hyamstagram</i></h1>
-				<div id ="logo-second-text">
-				<h1><i>hyamstagram</i></h1>
-				</div>
 		</div>
-		<div id ="searchbar" class ="col-6 d-flex" >
-			<input type = "text" class ="form-control">
+		<div id ="searchbar" class ="col-6 d-flex ml-5" >
+			<input type = "text" class ="form-control" id ="searchInput" list ="SearchedWords">
+			<datalist id = "SearchedWords">
+			
+				<option value="gor"/>
+				<option value="gorilla"/>
+			</datalist>
 			<button type ="button" class="btn btn-lg btn-primary output col-2">°Ë»ö</button>
 		</div>
-		<div class ="id-flex mt-4 float-right mr-3">
+		<div class ="id-flex mt-2 float-right mr-3">
 		<c:if test="${not empty userName}">
 			<div id = "name">${userName}´Ô 
-			<!--${userName}  --><a href="/user/sign_out">·Î±×¾Æ¿ô</a> </div>
+				<a href="/user/sign_out">·Î±×¾Æ¿ô</a> 
+			</div>
 		</c:if>
 		</div>
 		
@@ -34,10 +37,20 @@
 				<i class="bi bi-pencil-square"></i>
 			</a>
 			
-			<a href = "/user/add_info_view" class ="btn" id ="profile">
+			<a href = "/user/Profile_view" class ="btn" id ="profile">
 				<i class="bi bi-person-circle"></i>
+		
 			</a>
+			
 
 	</header>
+	
+	<script>
+	$(document).ready(function(){
+		var searchedWord = $("#searchInput").val();
+		
+	})
+	
+	</script>
 </body>
 </html>

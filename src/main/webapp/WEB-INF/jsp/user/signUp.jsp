@@ -14,15 +14,26 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- stylesheet -->
 	<link rel = "stylesheet" href = "/static/css/user/signup.css" type = "text/css">
-	
+
+
+<!-- font -->
+	 
+	 	<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">	
 
 </head>
 <body>
 <div id = "wrap">
 	<section class ="d-flex justify-content-center">
-		<div class ="col-lg-5">
-			<div class ="mt-5">
-				<input type = "text" placeholder= "ID 혹은 이메일" id = "loginIdInput" class ="form-control">
+		
+			<div class ="form bg-dark">
+			
+				<h1 class = "mt-4 ml-4">가입하기</h1>
+			
+			<hr>
+			 <div class ="col-6">
+				<input type = "text" placeholder= "ID" id = "loginIdInput" class ="form-control">
 					<div id = "lengthText" class ="d-none"><small class="text-danger">ID는 5자 이상으로 입력해주세요.</small></div>
 					<div id="duplicateText" class="d-none"><small class="text-danger">중복된 ID 입니다</small></div>
 					<div id="availableText" class="d-none"><small class="text-info">사용 가능한 ID 입니다.</small></div>
@@ -30,8 +41,9 @@
 				<input type = "password" placeholder= "비밀번호 확인"  id ="passwordConfirmInput" class ="form-control">
 				<input type = "text" placeholder= "사용자 이름" id = "nameInput" class ="form-control">
 				<button type ="button" id = "joinBtn" class ="btn mt-3">가입</button>
+				</div>
 			</div>
-		</div>	
+
 	</section>	
 	 	
 </div>

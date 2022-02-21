@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +34,12 @@
 
 </head>
 <body>
-<div id = "wrap" class ="container-fluid">
+<div id = "wrap">
 
 	<c:import url ="/WEB-INF/jsp/include/header.jsp" />
-	<section class ="bg-success d-flex justify-content-center align-items-center">
+	<section class ="d-flex justify-content-center align-items-center">
 		
-			<section id ="post" class ="bg-light col-8 ">
+			<section id ="post" class ="col-10 ">
 			<c:forEach var="post" items="${postList}">
 				
 					  <div id = "userInfo" class ="d-flex mt-3 ">
@@ -78,7 +80,16 @@
 					  
 					  
 					  <div id ="description">
-						  	${post.post.post_content}
+					  
+					  	${fn:substring(post.post.post_content, 0, 10)}
+					  		<c:if test ="${fn:length(post.post.post_content)>10}">
+					  		...
+					  		<label id = "seeMore">
+					  			<span data-desc-val="${post.post.post_content}" >더 보기</span>
+					  		</label>
+					  		</c:if>
+					  
+						  
 					  </div>
 					  
 					  <!-- 좋아요 -->
@@ -102,11 +113,18 @@
   					  
   					  
 					  <!-- 댓글 입력창 -->
+					  <c:choose>
+					  	<c:when test = "${post.post.commentSetting}">
+					  			<div class ="row">
+							  <input type ="text" id ="commentInput${post.post.post_id}" class ="form-control col-6 ml-3">
+							  <button type="button" id = "commentBtn" class ="btn" data-post-id = "${post.post.post_id}">입력</button>
+					  		</div>
+					  	</c:when>
+					  	<c:otherwise>
+					  		<div></div>
 					  
-					  <div class ="row">
-						  <input type ="text" id ="commentInput${post.post.post_id}" class ="form-control col-6 ml-3">
-						  <button type="button" id = "commentBtn" class ="btn" data-post-id = "${post.post.post_id}">입력</button>
-					  </div>
+					  	</c:otherwise>
+					  </c:choose>
 					  
 					  <!-- 댓글 입력창 끝 -->
 					  
@@ -172,13 +190,14 @@
 			}
 			
 		}); // ajax end
-		var desc =  $("#description").text();
 		
-		
-		if(desc.length > 14){
+		$("#seeMore").on("click", function(){
+			let desc = $(this).data("desc-val");
+			alert(desc);
 			
-			$(this).html(desc.slice(0, 14));
-		}
+			
+		});
+		
 		
 		
 		

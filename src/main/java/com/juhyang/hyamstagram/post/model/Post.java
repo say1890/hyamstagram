@@ -8,8 +8,19 @@ public class Post {
 	private String post_userName;
 	private String post_content;
 	private String post_imagePath;
+	private boolean commentSetting;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	
+
+
+	public boolean isCommentSetting() {
+		return commentSetting;
+	}
+	public void setCommentSetting(boolean commentSetting) {
+		this.commentSetting = commentSetting;
+	}
 	public int getPost_id() {
 		return post_id;
 	}

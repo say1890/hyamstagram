@@ -26,6 +26,13 @@ public interface PostDAO {
 	public List<DetailedPost> selectDetailedList(List<Post> postlist);
 
 	public int deletePost(int postId);
+
+	public int selectPostId(int userId);
+
+	public int insertHashTag(
+			@Param("userId") int userId, 
+			@Param("postId") int postId, 
+			@Param("hashtag") String hashtag);
 	
 	
 	

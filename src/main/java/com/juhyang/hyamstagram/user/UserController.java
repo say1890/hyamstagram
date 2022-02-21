@@ -33,6 +33,17 @@ public class UserController {
 	}
 	
 	
+	@GetMapping("/Profile_view")
+	public String addProfileView(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userLoginId = (String)session.getAttribute("userLoginId");
+		String userName = (String)session.getAttribute("userName");
+		String imagePath = (String)session.getAttribute("imagePath");
+		return "/user/profile";
+	}
+	
+	
+	
 	@GetMapping("/sign_out")
 	public String signOut(HttpServletRequest request) {
 		

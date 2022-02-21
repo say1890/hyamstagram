@@ -15,53 +15,68 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	   <!-- stylesheet -->
 	   <link rel = "stylesheet" href = "/static/css/user/signIn.css" type = "text/css">
+	   
+	   	 <!-- font -->
+	 
+	 	<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 	
 </head>
 <body>
 <div id ="wrap">
- <section class="d-flex justify-content-center col-12">
- 	<div class="col-6">
- 		<div class="card shadow-lg border-0 rounded-lg mt-5 bg-warning">
+ <section class="d-flex justify-content-center col-12 ">
+ 	
  		
- 			<div class="input-header">
- 				<h1 class="text-center font-weight-light my-4">Hyamstagram</h1>
- 			</div>
+ 		<div class="card shadow-lg border-0 rounded-lg mt-5">
  			
- 			<div class="input-body">
+	 			<h1 class="text-center mt-3"> 
+	 					<i>Hyamstagram</i>
+	 			</h1>
+ 			
+ 			<div class="input-body mt-5">
  				<form id="loginForm">
- 					<div class="col-6 mx-auto my-auto row">
+ 					<div class="col-7 mx-auto my-auto row ">
 						<input id="loginIdInput" placeholder="ID" class="mt-3 form-control"> 
 						<input id="passwordInput" placeholder="비밀번호" class="mt-3 form-control"> 
+						<a class="btn  mt-3 col-12 text-white" id ="login">로그인</a>
+						<button type="submit" class="btn  mt-3 col-12 d-none" id="realLogin">로그인</button>
 					</div>
-					<div class="col-9 d-flex justify-content-end align-items-end">
-							<button type="submit" class="btn  mt-3">로그인</button>
-					</div>
-					
+					<section class ="hr d-flex mt-3 col-12">
+						<hr class = "col-4 bg-dark"></hr>
+							<div class ="col-2 text-center text-white">또는</div>
+						<hr class = "col-4 bg-dark"></hr>
+					</section>
 				</form>
  			</div>
  			
- 			<div class="small-join-box">
- 				<label>계정이 없으신가요?</label> <a href="/user/signup_view">가입하기</a>
+ 			<div class="small-join-box col-12 ">
+ 				<label class ="text-center d-flex justify-content-center text-white">계정이 없으신가요?</label> 
+ 				<a href="/user/signup_view" class="d-flex justify-content-center text-white">가입하기</a>
  			</div>
 		 	
 		</div>
-	</div>
+	
  </section>
- 	
+</div> 	
 <script>
 $(document).ready(function(){
 	//hyamstagram
+		$("#login").on("click", function(){
+		$("#realLogin").click(); 
+			
+		});
 	
 	$("#loginForm").on("submit", function(e){
-		
+		alert();
 		e.preventDefault();
 		var loginId = $("#loginIdInput").val();
 		var password = $("#passwordInput").val();
-		if(loginId == null || loginId== "" ){
+		if(!loginId){
 			alert("id를 입력하세요");
 			return;
 		}
-		if(password == null || password== ""){
+		if(!password){
 			alert("pw를 입력하세요.");
 			return;
 		}

@@ -17,7 +17,7 @@
 	  
 	 <!-- css -->
 		
-		<link rel = "stylesheet" href = "/static/css/post/style.css" type = "text/css">
+		<link rel = "stylesheet" href = "/static/css/user/addInfo.css" type = "text/css">
 
 	
 	 <!-- font -->
@@ -27,9 +27,11 @@
 		<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id = "wrap">
-	<div id = "inputForm" class = "col-5 mx-auto my-5 bg-success">
-		<div class ="mt-3">
+<div id = "wrap" class ="row" style="float: none; margin:100 auto;">
+
+
+	<div id = "inputForm" class = "col-5 mx-auto my-5"  style="float: none; margin:100 auto;">
+		<div class ="mt-3"> 
 			<h3 class ="text-center">정보 수정하기</h3>
 		</div>
 		

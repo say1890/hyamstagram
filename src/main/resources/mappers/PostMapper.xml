@@ -68,11 +68,7 @@
 	
 	</select>
 	
-	
-	
-	
-	
-	
+
 	
 	
 	<select id ="selectDetailedList" resultType = "com.juhyang.hyamstagram.post.model.DetailedPost">
@@ -94,10 +90,35 @@
 	</delete>
 	
 	
+	<select id  = "selectPostId" parameterType="int" resultType ="int">
+		SELECT 
+			`post_id`
+		FROM 
+			`post`
+		WHERE
+			`post_userId` = #{userId}
+		ORDER BY
+			`updatedAt`
+		DESC
+		LIMIT 1;
+	</select>
 	
 	
-	
-	
+	<insert id ="insertHashTag" parameterType="map">
+	INSERT INTO
+		`hashtag`
+	(
+	`post_userId`,
+	`post_id`,
+	`content`,
+	`createdAt`	)
+	VALUES(
+	#{userId},
+	#{postId},
+	#{hashtag},
+	now()	
+	)
+	</insert>
 	
 
 

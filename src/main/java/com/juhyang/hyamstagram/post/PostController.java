@@ -40,7 +40,10 @@ public class PostController {
 		return"/post/add_post";
 	}
 	
-
+	@RequestMapping("/SearchResult")
+	public String resultView() {
+		return"/post/SearchResults";
+	}
 	
 	
 }
