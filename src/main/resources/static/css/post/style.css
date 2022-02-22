@@ -20,7 +20,7 @@ html,
 #wrap{
 	width:1200px;
 	margin:auto;
-	background-color: pink;	
+	background-color: rgb(255, 255, 255);	
 	
 }
 
@@ -88,7 +88,7 @@ section{
 	      
 	width:1200px;
 	height:1800px;
-	background-color:#ffe1e1;
+	background-color:rgb(255, 255, 255);
 	
 }
 
@@ -123,11 +123,11 @@ i:nth-child(1) {
 @keyframes neon6 {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
-      0 0 60px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
+      0 0 60px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 90px #ff00de;
   }
   to {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
-      0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+      0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 65px #ff00de;
   }
 }
 /*Make stuff responsive*/
@@ -138,3 +138,25 @@ i:nth-child(1) {
   }
 }
 
+
+
+
+
+
+
+/* moving grad */
+
+.moving-grad {
+  background: linear-gradient(270deg, #00daef, #bc67ff);
+  background-size: 200% 200%;
+  animation: MoveGrad 5s ease infinite;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+@keyframes MoveGrad {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}

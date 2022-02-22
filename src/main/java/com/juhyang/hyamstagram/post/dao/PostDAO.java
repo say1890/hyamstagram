@@ -33,6 +33,12 @@ public interface PostDAO {
 			@Param("userId") int userId, 
 			@Param("postId") int postId, 
 			@Param("hashtag") String hashtag);
+
+	
+
+	public int getTagPostId(@Param("searchedWord") String searchedWord);
+	
+	public int selectSearchedPost(@Param("postId") int postId);
 	
 	
 	

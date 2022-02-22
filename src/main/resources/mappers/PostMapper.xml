@@ -122,6 +122,30 @@
 	)
 	</insert>
 	
+	<select id="getTagPostId" parameterType="String" resultType ="int">
+	
+		SELECT 
+			`post_id`
+		FROM
+			`hashtag`
+		WHERE
+			`content` = #{searchedWord}
+
+		ORDER BY `post_id` DESC
+	</select>
+	
+	
+	<select id = "selectSearchedPost" resultType = "com.juhyang.hyamstagram.post.model.DetailedPost">
+		SELECT
+			 *
+		FROM
+			`post`
+		WHERE
+			`post_id` = #{postId}
+			
+		 
+	
+	</select>
 
 
 </mapper>

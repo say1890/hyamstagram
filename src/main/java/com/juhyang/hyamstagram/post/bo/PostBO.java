@@ -135,7 +135,43 @@ public class PostBO {
 				
 			
 		}
+
+	  public int searchPost(String searchedWord) {
+		return postDAO.getTagPostId(searchedWord); 
 		
+	}
+		
+	 public List<DetailedPost> getSearchedPostList(int postId, int userId){
+		 List<Post> postList = postDAO.selectPostList();	
+		List<DetailedPost> DetailedPostList = new ArrayList<>();
+		// 포스트 하나당 댓글 가져오기
+				for(Post post : postList) {
+								// 해당하는 포스트의 댓글 가져오기 
+								List<Comment> commentList = commentBO.getCommentListByPostId(post.getPost_id());
+								
+								// 해당하는 포스트를 현재 로그인한 사용자가 좋아요 했는지 확인
+								boolean isLike = likeBO.likeByUserId(post.getPost_id(), userId);
+								
+								//사용자의 프로필 사진 주소 받아오기.
+								String userProfile  = userBO.getImagePath(post.getPost_userId());
+								
+								//  좋아요 개수
+								int likeCount = likeBO.selectLike(post.getPost_id());
+								
+								//post, 댓글 매칭
+								DetailedPost DetailedPost = new DetailedPost();
+								DetailedPost.setPost(post);
+								DetailedPost.setCommentList(commentList); 
+								DetailedPost.setLike(isLike);
+								DetailedPost.setCountLike(likeCount);
+								DetailedPost.setUserProfile(userProfile);
+								DetailedPostList.add(DetailedPost);
+				}
+				
+		return DetailedPostList;
+				
+
+	 }
 		
 
 

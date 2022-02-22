@@ -7,11 +7,21 @@ import com.juhyang.hyamstagram.post.comment.model.Comment;
 public class DetailedPost {
 	// 포스트, 댓글 리스트, 좋아요 개수 
 	private Post post;
+	private Hashtag hashtag;
 	private List<Comment> commentList;
 	private boolean isLike;
 	private int countLike;
 	private String userProfile;
 	
+	
+	
+	
+	public Hashtag getHashtag() {
+		return hashtag;
+	}
+	public void setHashtag(Hashtag hashtag) {
+		this.hashtag = hashtag;
+	}
 	public Post getPost() {
 		return post;
 	}

@@ -31,12 +31,22 @@
 <body>
 <div id ="wrap">
 <c:import url ="/WEB-INF/jsp/include/header.jsp" />
+<c:forEach var ="post" items ="${postList}">
 	<table>
 		<thead>
+			<tr>
+				<th></th>
+				<th></th>
 		</thead>
+		
 		<tbody>
+			<tr>
+				<th></th>
+				<th></th>
+			</tr>
 		</tbody>
 	</table>
+</c:forEach>	
 </div>
 </body>
 </html>

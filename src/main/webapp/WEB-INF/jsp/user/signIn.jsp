@@ -38,7 +38,7 @@
  				<form id="loginForm">
  					<div class="col-7 mx-auto my-auto row ">
 						<input id="loginIdInput" placeholder="ID" class="mt-3 form-control"> 
-						<input id="passwordInput" placeholder="비밀번호" class="mt-3 form-control"> 
+						<input id="passwordInput" type= "password" placeholder="비밀번호" class="mt-3 form-control"> 
 						<a class="btn  mt-3 col-12 text-white" id ="login">로그인</a>
 						<button type="submit" class="btn  mt-3 col-12 d-none" id="realLogin">로그인</button>
 					</div>
@@ -68,7 +68,6 @@ $(document).ready(function(){
 		});
 	
 	$("#loginForm").on("submit", function(e){
-		alert();
 		e.preventDefault();
 		var loginId = $("#loginIdInput").val();
 		var password = $("#passwordInput").val();

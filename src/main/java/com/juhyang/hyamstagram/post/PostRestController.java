@@ -56,12 +56,6 @@ public class PostRestController {
 			
 		
 		
-	
-
-		
-		
-		
-		
 		if(count == 1) {
 			result.put("result", "success");
 			
@@ -94,6 +88,7 @@ public class PostRestController {
 		return result;
 
 	}
+	
 	
 }
 

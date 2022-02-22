@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileManagerService{
 	
-	public final static String FILE_UPLOAD_PATH = "D:\\juhyang\\springProject\\upload\\image/";
-	//public final static String FILE_UPLOAD_PATH = "C:\\Users\\karu1\\OneDrive\\문서\\portfolio\\hyamstagram-workspace\\upload\\image/";
+	//public final static String FILE_UPLOAD_PATH = "D:\\juhyang\\springProject\\upload\\image/";
+	public final static String FILE_UPLOAD_PATH = "C:\\Users\\karu1\\OneDrive\\문서\\portfolio\\hyamstagram-workspace\\upload\\image/";
 	private static Logger logger = LoggerFactory.getLogger(FileManagerService.class);
 	
 	// 파일 저장 

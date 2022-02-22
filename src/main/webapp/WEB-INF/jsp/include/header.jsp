@@ -20,7 +20,7 @@
 				<option value="gor"/>
 				<option value="gorilla"/>
 			</datalist>
-			<button type ="button" class="btn btn-lg btn-primary output col-2">검색</button>
+			<button type ="button" id="searchBtn" class="btn btn-lg btn-primary output col-2">검색</button>
 		</div>
 		<div class ="id-flex mt-2 float-right mr-3">
 		<c:if test="${not empty userName}">
@@ -47,8 +47,25 @@
 	
 	<script>
 	$(document).ready(function(){
-		var searchedWord = $("#searchInput").val();
 		
+		
+		$("#searchBtn").on("click",function(){
+			var searchedWord = $("#searchInput").val();
+			$.ajax({
+				type:"get",
+				url:"/post/SearchResult", 
+				data:{"searchedWord":searchedWord},
+				success:function(data) {
+					location.href ="/post/SearchResult";
+				},
+				error:function() {
+					alert("에러발생");
+				}
+				
+				
+			});
+			
+		});
 	})
 	
 	</script>

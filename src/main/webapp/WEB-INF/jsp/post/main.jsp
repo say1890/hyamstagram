@@ -37,10 +37,11 @@
 <div id = "wrap">
 
 	<c:import url ="/WEB-INF/jsp/include/header.jsp" />
-	<section class ="d-flex justify-content-center align-items-center">
+	<section class ="d-flex mt-5 justify-content-center align-items-center moving-grad">
 		
-			<section id ="post" class ="col-12 d-flex justify-content-center">
+			<section id ="post" class ="mt-5 col-12 d-flex justify-content-center">
 			<section class ="col-10">
+	
 			<c:forEach var="post" items="${postList}">
 				
 					  <div id = "userInfo" class ="d-flex mt-3 ">
@@ -103,7 +104,7 @@
 					  		
 					  		<c:otherwise>
 					  		
-					  			<i class="bi bi-heart"></i>
+					  			<i class="bi bi-heart text-danger"></i>
 					  		
 					  		</c:otherwise>
 					  	</c:choose>	
@@ -116,13 +117,13 @@
 					  <!-- 댓글 입력창 -->
 					  <c:choose>
 					  	<c:when test = "${post.post.commentSetting}">
-					  			<div class ="row">
-							  <input type ="text" id ="commentInput${post.post.post_id}" class ="form-control col-6 ml-3">
-							  <button type="button" id = "commentBtn" class ="btn" data-post-id = "${post.post.post_id}">입력</button>
-					  		</div>
+					  			
 					  	</c:when>
 					  	<c:otherwise>
-					  		<div></div>
+					  		<div class ="row">
+							  		<input type ="text" id ="commentInput${post.post.post_id}" class ="form-control col-6 ml-3">
+							  		<button type="button" id = "commentBtn" class ="btn" data-post-id = "${post.post.post_id}">입력</button>
+					  			</div>
 					  
 					  	</c:otherwise>
 					  </c:choose>
@@ -218,7 +219,6 @@
 					success:function(data){
 						if(data.result == "success"){
 							location.reload();
-
 						}
 						else{
 							alert("댓글 작성 실패");
