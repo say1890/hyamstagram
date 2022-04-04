@@ -68,32 +68,6 @@
 
 
 
-###  ✨ DEMO ✨
-
-
- 🍓 회원 가입 /  로그인
- ![user](demo/join_and_login.gif)
- 
- 🍓  Id, PW 찾기
- ![user](demo/find_pw.gif)
-
- 🍓 이미지 첨부한 글 쓰기 / 댓글 달기
- ![user](demo/upload_and_comment.gif)
- 
- 🍓 좋아요
- ![user](demo/like.gif)
- 
- 🍓 좋아요 취소 
- ![user](demo/deleteLike.gif)
-
-
- 🍓 정보 수정
- ![user](demo/editProfile.gif)
- 
- 🍓 로그 아웃
- ![user](demo/logout.gif)
-
- 
  
  
 ###  🤑 외부 라이브러리 라이센스 🤑
@@ -110,12 +84,6 @@
  * 검색 기능 추가
 
 
-
-
-###   📂 폴더 구조
-~~~
-
-~~~
 
 
 ![hyamming's GitHub stats](https://github-readme-stats.vercel.app/api?username=say1890&show_icons=true&theme=radical)
